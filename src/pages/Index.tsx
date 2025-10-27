@@ -25,11 +25,11 @@ const Index = () => {
         <footer className="py-12 px-6 border-t border-white/10 glass">
           <div className="max-w-7xl mx-auto text-center">
             <div className="mb-4">
-              <h3 className="text-2xl font-bold gradient-text mb-2">Recap Render AI</h3>
+              <h3 className="text-2xl font-bold gradient-text mb-2">ClassroomAI</h3>
               <p className="text-muted-foreground/80">Transform your learning experience with AI-powered video lectures</p>
             </div>
             <p className="text-sm text-muted-foreground/60">
-              © 2025 Recap Render AI. All rights reserved.
+              © 2025 ClassroomAI. All rights reserved.
             </p>
           </div>
         </footer>

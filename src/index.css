@@ -57,6 +57,10 @@
 }
 
 @layer utilities {
+  .to-primary-glow {
+    --tw-gradient-to: hsl(var(--primary-glow));
+  }
+
   /* Premium Gradients */
   .gradient-primary {
     @apply bg-gradient-to-r from-primary via-accent to-primary-glow;

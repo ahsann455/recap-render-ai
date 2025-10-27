@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Upload, FileText, Video, Loader2 } from "lucide-react";
+import { Upload, FileText, Video, Loader2, Zap, BookOpen, Target, GraduationCap, Palette } from "lucide-react";
 import { toast } from "sonner";
 
 type LectureMode = "summary" | "detailed" | "test";
@@ -13,21 +13,21 @@ const modes = [
     name: "Summary Mode",
     description: "Quick overview of key concepts",
     color: "accent-summary",
-    icon: "⚡"
+    icon: Zap
   },
   {
     id: "detailed" as LectureMode,
     name: "Detailed Mode",
     description: "In-depth explanations",
     color: "accent-detailed",
-    icon: "📚"
+    icon: BookOpen
   },
   {
     id: "test" as LectureMode,
     name: "Test Prep Mode",
     description: "Practice questions & solutions",
     color: "accent-test",
-    icon: "🎯"
+    icon: Target
   }
 ];
 
@@ -36,13 +36,13 @@ const styles = [
     id: "professor" as LectureStyle,
     name: "AI Professor",
     description: "Virtual teacher with board",
-    icon: "👨‍🏫"
+    icon: GraduationCap
   },
   {
     id: "visual" as LectureStyle,
     name: "Visual Concepts",
     description: "Animated visual explanations",
-    icon: "🎨"
+    icon: Palette
   }
 ];
 
@@ -117,7 +117,9 @@ export const UploadSection = () => {
                 }`}
                 onClick={() => setSelectedMode(mode.id)}
               >
-                <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{mode.icon}</div>
+                <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                  <mode.icon className="h-12 w-12 text-primary" />
+                </div>
                 <h4 className="text-xl font-bold mb-2 group-hover:gradient-text transition-all">{mode.name}</h4>
                 <p className="text-sm text-muted-foreground/80">{mode.description}</p>
                 {selectedMode === mode.id && (
@@ -142,7 +144,9 @@ export const UploadSection = () => {
                 }`}
                 onClick={() => setSelectedStyle(style.id)}
               >
-                <div className="text-4xl mb-4 transform group-hover:scale-110 transition-transform duration-300">{style.icon}</div>
+                <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300">
+                  <style.icon className="h-12 w-12 text-primary" />
+                </div>
                 <h4 className="text-xl font-bold mb-2 group-hover:gradient-text transition-all">{style.name}</h4>
                 <p className="text-sm text-muted-foreground/80">{style.description}</p>
                 {selectedStyle === style.id && (
