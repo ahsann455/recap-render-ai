@@ -23,31 +23,41 @@ const steps = [
 
 export const HowItWorks = () => {
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-secondary/20 to-background">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+    <section className="py-32 px-6 relative overflow-hidden">
+      {/* Background Grid */}
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f10_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f10_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6">
             How It Works
           </h2>
-          <p className="text-xl text-muted-foreground">
-            Three simple steps to revolutionize your learning
+          <p className="text-xl text-muted-foreground/80">
+            Three simple steps to revolutionize your learning experience
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 relative">
+        <div className="grid md:grid-cols-3 gap-12 relative">
           {steps.map((step, index) => (
-            <div key={index} className="relative">
+            <div key={index} className="relative group">
               <div className="flex flex-col items-center text-center">
-                <div className={`w-20 h-20 rounded-2xl bg-gradient-to-r ${step.color} flex items-center justify-center mb-6 shadow-elevated hover:scale-110 transition-transform duration-300`}>
-                  <step.icon className="h-10 w-10 text-white" />
+                {/* Step Number Badge */}
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 w-10 h-10 rounded-full gradient-primary flex items-center justify-center text-white font-bold text-sm shadow-glow z-10">
+                  {index + 1}
                 </div>
                 
-                <h3 className="text-2xl font-semibold mb-3">{step.title}</h3>
-                <p className="text-muted-foreground">{step.description}</p>
+                <div className={`w-24 h-24 rounded-3xl bg-gradient-to-br ${step.color} flex items-center justify-center mb-8 shadow-intense group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 mt-6`}>
+                  <step.icon className="h-12 w-12 text-white" />
+                </div>
+                
+                <h3 className="text-3xl font-bold mb-4 group-hover:gradient-text transition-all">{step.title}</h3>
+                <p className="text-muted-foreground/80 text-lg leading-relaxed">{step.description}</p>
               </div>
 
               {index < steps.length - 1 && (
-                <ArrowRight className="hidden md:block absolute top-10 -right-8 h-6 w-6 text-muted-foreground/30" />
+                <div className="hidden lg:block absolute top-1/3 -right-6 z-20">
+                  <ArrowRight className="h-8 w-8 text-primary/50 animate-pulse" />
+                </div>
               )}
             </div>
           ))}

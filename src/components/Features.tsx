@@ -42,33 +42,39 @@ const features = [
 
 export const Features = () => {
   return (
-    <section className="py-24 px-6 bg-gradient-to-b from-background to-secondary/20">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+    <section className="py-32 px-6 relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-purple-950/10 to-background" />
+      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl" />
+      
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl md:text-6xl font-bold mb-6">
             Powerful Features for
-            <span className="block mt-2 bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-              Smarter Learning
+            <span className="block mt-3 gradient-text">
+              Next-Gen Learning
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Everything you need to transform passive note-reading into active, engaging video learning
+          <p className="text-xl text-muted-foreground/80 max-w-2xl mx-auto leading-relaxed">
+            Everything you need to transform passive note-reading into immersive, 
+            AI-powered video experiences
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
             <Card 
               key={index}
-              className="p-6 border-2 hover:border-primary/50 transition-all duration-300 hover:shadow-elevated group cursor-pointer bg-gradient-to-br from-card to-secondary/30 backdrop-blur-sm"
+              className="glass-card p-8 hover:bg-white/10 transition-all duration-500 hover:shadow-premium group cursor-pointer hover:scale-105 hover:-translate-y-1"
             >
-              <div className={`w-12 h-12 rounded-xl bg-gradient-to-r ${feature.gradient} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300`}>
-                <feature.icon className="h-6 w-6 text-white" />
+              <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-glow`}>
+                <feature.icon className="h-7 w-7 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+              <h3 className="text-2xl font-bold mb-3 group-hover:gradient-text transition-all">
                 {feature.title}
               </h3>
-              <p className="text-muted-foreground">
+              <p className="text-muted-foreground/80 leading-relaxed">
                 {feature.description}
               </p>
             </Card>

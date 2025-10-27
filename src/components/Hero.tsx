@@ -1,76 +1,76 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Upload } from "lucide-react";
-import heroBackground from "@/assets/hero-background.jpg";
+import { ArrowRight, Upload, Sparkles } from "lucide-react";
 
 export const Hero = ({ onGetStarted }: { onGetStarted: () => void }) => {
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-secondary/30" />
-      
-      {/* Hero Image with Overlay */}
-      <div className="absolute inset-0 opacity-10">
-        <img 
-          src={heroBackground} 
-          alt="AI Education Background" 
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/50 to-background" />
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Animated Gradient Background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-background via-purple-950/20 to-background">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-600/20 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-pink-600/10 via-transparent to-transparent" />
       </div>
+      
+      {/* Floating Orbs */}
+      <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500/30 rounded-full blur-3xl animate-float" />
+      <div className="absolute bottom-20 right-20 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
+      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
 
       {/* Content */}
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-        <div className="inline-block mb-6 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 backdrop-blur-sm animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <span className="text-sm font-medium bg-gradient-to-r from-primary to-primary-glow bg-clip-text text-transparent">
-            Revolutionary AI-Powered Learning
+      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
+        <div className="inline-flex items-center gap-2 mb-8 px-6 py-3 rounded-full glass-card animate-in fade-in slide-in-from-bottom-4 duration-700 shadow-premium">
+          <Sparkles className="w-4 h-4 text-primary" />
+          <span className="text-sm font-medium gradient-text">
+            Revolutionary AI-Powered Learning Platform
           </span>
         </div>
 
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100">
-          Transform Your Notes Into
-          <span className="block mt-2 bg-gradient-to-r from-primary via-primary-glow to-primary bg-clip-text text-transparent">
-            AI Video Lectures
+        <h1 className="text-6xl md:text-8xl font-bold mb-8 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 leading-tight">
+          Transform Notes Into
+          <span className="block mt-4 gradient-text animate-shimmer bg-gradient-to-r from-primary via-accent to-primary-glow">
+            Cinematic AI Lectures
           </span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto mb-10 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
-          Upload your study materials and watch as our AI creates personalized video lectures 
-          with virtual professors or stunning visual explanations.
+        <p className="text-xl md:text-2xl text-muted-foreground/90 max-w-3xl mx-auto mb-12 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 leading-relaxed">
+          Experience the future of learning with AI-generated video lectures featuring
+          <span className="text-foreground font-semibold"> virtual professors </span>
+          and
+          <span className="text-foreground font-semibold"> stunning visualizations</span>
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
           <Button 
             size="lg" 
-            className="text-lg px-8 py-6 bg-gradient-to-r from-primary to-primary-glow hover:shadow-glow transition-all duration-300 group"
+            className="text-lg px-10 py-7 gradient-primary hover:shadow-glow transition-all duration-500 group border border-white/20 animate-glow"
             onClick={onGetStarted}
           >
-            <Upload className="mr-2 h-5 w-5 group-hover:scale-110 transition-transform" />
-            Get Started Free
-            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+            <Upload className="mr-3 h-6 w-6 group-hover:scale-110 transition-transform" />
+            Start Learning Free
+            <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform" />
           </Button>
           
           <Button 
             size="lg" 
             variant="outline" 
-            className="text-lg px-8 py-6 border-2 hover:bg-secondary/50 backdrop-blur-sm"
+            className="text-lg px-10 py-7 glass-card hover:bg-white/10 transition-all duration-300 border-white/20"
           >
             Watch Demo
           </Button>
         </div>
 
-        {/* Stats */}
-        <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mt-16 animate-in fade-in slide-in-from-bottom-12 duration-700 delay-500">
-          <div className="text-center">
-            <div className="text-3xl font-bold bg-gradient-to-r from-accent-summary to-accent-summary/70 bg-clip-text text-transparent">10x</div>
-            <div className="text-sm text-muted-foreground mt-1">Faster Learning</div>
+        {/* Premium Stats */}
+        <div className="grid grid-cols-3 gap-12 max-w-3xl mx-auto mt-24 animate-in fade-in slide-in-from-bottom-12 duration-700 delay-500">
+          <div className="glass-card p-6 rounded-2xl">
+            <div className="text-5xl font-bold gradient-text mb-2">10x</div>
+            <div className="text-sm text-muted-foreground uppercase tracking-wider">Faster Learning</div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold bg-gradient-to-r from-accent-detailed to-accent-detailed/70 bg-clip-text text-transparent">2</div>
-            <div className="text-sm text-muted-foreground mt-1">Lecture Styles</div>
+          <div className="glass-card p-6 rounded-2xl">
+            <div className="text-5xl font-bold gradient-text mb-2">2</div>
+            <div className="text-sm text-muted-foreground uppercase tracking-wider">Lecture Styles</div>
           </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold bg-gradient-to-r from-accent-test to-accent-test/70 bg-clip-text text-transparent">3</div>
-            <div className="text-sm text-muted-foreground mt-1">Learning Modes</div>
+          <div className="glass-card p-6 rounded-2xl">
+            <div className="text-5xl font-bold gradient-text mb-2">3</div>
+            <div className="text-sm text-muted-foreground uppercase tracking-wider">Learning Modes</div>
           </div>
         </div>
       </div>
