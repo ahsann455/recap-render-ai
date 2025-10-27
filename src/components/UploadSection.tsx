@@ -3,6 +3,8 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Upload, FileText, Video, Loader2, Zap, BookOpen, Target, GraduationCap, Palette } from "lucide-react";
 import { toast } from "sonner";
+import { api } from "@/services/api";
+import { LectureModal } from "@/components/LectureModal";
 
 type LectureMode = "summary" | "detailed" | "test";
 type LectureStyle = "professor" | "visual";
@@ -51,37 +53,56 @@ export const UploadSection = () => {
   const [selectedStyle, setSelectedStyle] = useState<LectureStyle>("professor");
   const [isProcessing, setIsProcessing] = useState(false);
   const [fileName, setFileName] = useState<string | null>(null);
+  const [documentId, setDocumentId] = useState<string | null>(null);
+  const [generatedLecture, setGeneratedLecture] = useState<any>(null);
+  const [showModal, setShowModal] = useState(false);
 
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
-    if (file) {
-      // Check file type
-      const validTypes = ['.pdf', '.doc', '.docx', '.txt'];
-      const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase();
-      
-      if (!validTypes.includes(fileExtension)) {
-        toast.error("Please upload a PDF, DOC, DOCX, or TXT file");
-        return;
-      }
+    if (!file) return;
 
-      setFileName(file.name);
-      setIsProcessing(true);
-      
-      // Simulate processing
-      setTimeout(() => {
-        setIsProcessing(false);
-        toast.success(`Successfully uploaded ${file.name}! Ready to generate lecture.`);
-      }, 2000);
-    }
-  };
+    // Check file type
+    const validTypes = ['.pdf', '.doc', '.docx', '.txt'];
+    const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase();
 
-  const handleGenerateLecture = () => {
-    if (!fileName) {
-      toast.error("Please upload a file first");
+    if (!validTypes.includes(fileExtension)) {
+      toast.error("Please upload a PDF, DOC, DOCX, or TXT file");
       return;
     }
 
-    toast.info("Video generation coming soon! This is the MVP version.");
+    try {
+      setIsProcessing(true);
+      setFileName(file.name);
+      const res = await api.uploadDocument(file);
+      setDocumentId(res.documentId);
+      toast.success(`Uploaded ${res.fileName}. ${res.wordCount} words processed.`);
+    } catch (err: any) {
+      console.error(err);
+      toast.error(err.message || "Upload failed");
+      setFileName(null);
+      setDocumentId(null);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handleGenerateLecture = async () => {
+    if (!documentId) {
+      toast.error("Please upload a file first");
+      return;
+    }
+    try {
+      setIsProcessing(true);
+      const res = await api.generateLecture(documentId, selectedMode, selectedStyle);
+      setGeneratedLecture(res.lecture);
+      setShowModal(true);
+      toast.success(`Lecture script ready! ~${res.lecture.estimatedDuration} min`);
+    } catch (err: any) {
+      console.error(err);
+      toast.error(err.message || "Failed to generate lecture");
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   return (
@@ -215,20 +236,31 @@ export const UploadSection = () => {
                 )}
               </Button>
 
-              {fileName && !isProcessing && (
+              {fileName && (
                 <Button
                   size="lg"
                   onClick={handleGenerateLecture}
+                  disabled={isProcessing || !documentId}
                   className="bg-gradient-to-r from-accent-summary via-accent-detailed to-accent-test hover:shadow-intense transition-all duration-500 text-lg px-8 py-6 border border-white/20 animate-glow"
                 >
-                  <Video className="mr-3 h-6 w-6" />
-                  Generate Lecture
+                  {isProcessing ? (
+                    <Loader2 className="mr-3 h-6 w-6 animate-spin" />
+                  ) : (
+                    <Video className="mr-3 h-6 w-6" />
+                  )}
+                  {isProcessing ? 'Generating...' : 'Generate Lecture'}
                 </Button>
               )}
             </div>
           </div>
         </Card>
       </div>
+
+      <LectureModal 
+        isOpen={showModal}
+        onClose={() => setShowModal(false)}
+        lecture={generatedLecture}
+      />
     </section>
   );
 };
