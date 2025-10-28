@@ -1,7 +1,43 @@
-const { GoogleGenerativeAI } = require('@google/generative-ai');
+const Groq = require('groq-sdk');
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
-const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+const groq = new Groq({ apiKey: process.env.GROQ_API_KEY });
+const MODEL_CANDIDATES = [
+  'llama-3.3-70b-versatile',
+  'llama-3.1-8b-instant',
+  'mixtral-8x7b-32768'
+];
+
+async function generateChatWithFallback(system, user) {
+  let lastErr;
+  for (const model of MODEL_CANDIDATES) {
+    try {
+      const completion = await groq.chat.completions.create({
+        model,
+        temperature: 0.7,
+        messages: [
+          { role: 'system', content: system },
+          { role: 'user', content: user }
+        ]
+      });
+      return completion.choices?.[0]?.message?.content?.trim() || '';
+    } catch (e) {
+      lastErr = e;
+      const msg = String(e?.message || e || '');
+      if (/model.*not.*found|Unknown model|404|decommissioned|invalid_request_error/i.test(msg)) {
+        continue; // try next model id
+      }
+      throw e; // different error, surface immediately
+    }
+  }
+  throw new Error(lastErr?.message || String(lastErr));
+}
+
+async function generateTextWithFallback(prompt) {
+  return generateChatWithFallback(
+    'You are a helpful assistant for educational content and video pre-production.',
+    prompt
+  );
+}
 
 class ScriptGenerator {
   /**
@@ -9,13 +45,9 @@ class ScriptGenerator {
    */
   async generateScript(text, mode, style) {
     const prompts = this.getPrompt(mode, style);
-    
     try {
-      const prompt = `${prompts.system}\n\n${prompts.user}\n\nNotes:\n${text}`;
-      
-      const result = await model.generateContent(prompt);
-      const response = await result.response;
-      return response.text();
+      const userMsg = `${prompts.user}\n\nNotes:\n${text}`;
+      return await generateChatWithFallback(prompts.system, userMsg);
     } catch (error) {
       throw new Error(`Script generation failed: ${error.message}`);
     }
@@ -66,10 +98,8 @@ Break this lecture script into scenes for video production. For each scene, prov
 
 Script:
 ${script}`;
-      
-      const result = await model.generateContent(prompt);
-      const response = await result.response;
-      return response.text();
+
+      return await generateTextWithFallback(prompt);
     } catch (error) {
       throw new Error(`Scene breakdown generation failed: ${error.message}`);
     }

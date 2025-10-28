@@ -54,9 +54,13 @@ router.post('/', upload.single('file'), async (req, res) => {
 
     console.log('File uploaded:', req.file.filename);
 
+    // Resolve the stored path explicitly to avoid env-specific path issues
+    const storedPath = path.join(__dirname, '../uploads', req.file.filename);
+    console.log('Stored path:', storedPath, 'mimetype:', req.file.mimetype, 'originalname:', req.file.originalname);
+
     // Parse the document
     const text = await documentParser.parseDocument(
-      req.file.path,
+      storedPath,
       req.file.mimetype
     );
 
@@ -76,7 +80,8 @@ router.post('/', upload.single('file'), async (req, res) => {
     // Clean up file if parsing failed
     if (req.file) {
       try {
-        await fs.unlink(req.file.path);
+        const storedPath = path.join(__dirname, '../uploads', req.file.filename);
+        await fs.unlink(storedPath);
       } catch (unlinkError) {
         console.error('Failed to delete file:', unlinkError);
       }

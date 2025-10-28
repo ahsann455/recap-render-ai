@@ -1,4 +1,4 @@
-const pdf = require('pdf-parse');
+const pdfjsLib = require('pdfjs-dist');
 const mammoth = require('mammoth');
 const fs = require('fs').promises;
 
@@ -8,9 +8,19 @@ class DocumentParser {
    */
   async parsePDF(filePath) {
     try {
+      console.log('parsePDF reading:', filePath);
       const dataBuffer = await fs.readFile(filePath);
-      const data = await pdf(dataBuffer);
-      return data.text;
+      console.log('parsePDF buffer length:', dataBuffer.length);
+      const loadingTask = pdfjsLib.getDocument({ data: new Uint8Array(dataBuffer) });
+      const pdfDoc = await loadingTask.promise;
+      let text = '';
+      for (let pageNum = 1; pageNum <= pdfDoc.numPages; pageNum++) {
+        const page = await pdfDoc.getPage(pageNum);
+        const content = await page.getTextContent();
+        const pageText = content.items.map((it) => it.str).join(' ');
+        text += pageText + '\n';
+      }
+      return text;
     } catch (error) {
       throw new Error(`PDF parsing failed: ${error.message}`);
     }
@@ -45,6 +55,8 @@ class DocumentParser {
    */
   async parseDocument(filePath, mimeType) {
     let text = '';
+
+    console.log('parseDocument:', { filePath, mimeType });
 
     if (mimeType === 'application/pdf') {
       text = await this.parsePDF(filePath);
