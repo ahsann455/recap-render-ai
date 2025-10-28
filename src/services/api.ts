@@ -24,6 +24,27 @@ export interface LectureResponse {
   next?: string;
 }
 
+export interface VideoGenerationOptions {
+  ttsProvider?: string;
+  theme?: string;
+  fps?: number;
+  width?: number;
+  height?: number;
+  voice?: string;
+  music?: string;
+  font?: string;
+  kenburns?: boolean;
+}
+
+export interface VideoResponse {
+  success: boolean;
+  videoPath: string;
+  srtPath: string;
+  videoUrl: string;
+  srtUrl: string;
+  message: string;
+}
+
 export const api = {
   /**
    * Upload a document file
@@ -64,6 +85,29 @@ export const api = {
     if (!response.ok) {
       const error = await response.json();
       throw new Error(error.message || 'Lecture generation failed');
+    }
+
+    return response.json();
+  },
+
+  /**
+   * Generate video from text or documentId
+   */
+  async generateVideo(
+    text: string,
+    options?: VideoGenerationOptions
+  ): Promise<VideoResponse> {
+    const response = await fetch(`${API_BASE_URL}/video/generate`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ text, options }),
+    });
+
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'Video generation failed');
     }
 
     return response.json();

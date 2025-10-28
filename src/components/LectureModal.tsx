@@ -1,8 +1,10 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { Copy, Download, X } from "lucide-react";
+import { Copy, Download, X, Video } from "lucide-react";
 import { toast } from "sonner";
+import { useState } from "react";
+import { api } from "@/services/api";
 
 interface LectureModalProps {
   isOpen: boolean;
@@ -18,6 +20,8 @@ interface LectureModalProps {
 }
 
 export const LectureModal = ({ isOpen, onClose, lecture }: LectureModalProps) => {
+  const [isGeneratingVideo, setIsGeneratingVideo] = useState(false);
+  
   if (!lecture) return null;
 
   const copyToClipboard = (text: string) => {
@@ -34,6 +38,35 @@ export const LectureModal = ({ isOpen, onClose, lecture }: LectureModalProps) =>
     a.click();
     URL.revokeObjectURL(url);
     toast.success("Downloaded!");
+  };
+
+  const generateVideo = async () => {
+    setIsGeneratingVideo(true);
+    try {
+      toast.info("Generating video... This may take a few minutes.");
+      
+      const result = await api.generateVideo(lecture.script, {
+        ttsProvider: 'edge',
+        theme: 'dark',
+        fps: 24,
+        width: 1280,
+        height: 720,
+      });
+      
+      toast.success("Video generated successfully!");
+      
+      // Download the video
+      const videoUrl = `http://localhost:5000${result.videoUrl}`;
+      const a = document.createElement('a');
+      a.href = videoUrl;
+      a.download = result.videoUrl.split('/').pop();
+      a.click();
+    } catch (error) {
+      console.error('Video generation error:', error);
+      toast.error(error instanceof Error ? error.message : 'Failed to generate video');
+    } finally {
+      setIsGeneratingVideo(false);
+    }
   };
 
   return (
@@ -131,11 +164,16 @@ export const LectureModal = ({ isOpen, onClose, lecture }: LectureModalProps) =>
           </TabsContent>
         </Tabs>
 
-        <div className="mt-6 p-4 glass-card rounded-lg border border-yellow-500/30">
-          <p className="text-sm text-yellow-200/80">
-            <strong>Next Phase:</strong> Video generation with AI avatars coming soon! 
-            For now, you can use these scripts to create your own videos or as study materials.
-          </p>
+        <div className="mt-6 flex justify-center">
+          <Button
+            onClick={generateVideo}
+            disabled={isGeneratingVideo}
+            size="lg"
+            className="glass bg-gradient-to-r from-primary to-accent hover:opacity-90 transition-opacity"
+          >
+            <Video className="h-5 w-5 mr-2" />
+            {isGeneratingVideo ? "Generating Video..." : "Generate Video"}
+          </Button>
         </div>
       </DialogContent>
     </Dialog>
