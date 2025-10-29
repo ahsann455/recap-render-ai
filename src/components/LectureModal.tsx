@@ -115,16 +115,11 @@ export const LectureModal = ({ isOpen, onClose, lecture }: LectureModalProps) =>
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-5xl max-h-[90vh] overflow-hidden flex flex-col bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800">
+      <DialogContent className="max-w-5xl h-[90vh] overflow-hidden flex flex-col bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800">
         <DialogHeader>
-          <div className="flex items-center justify-between">
-            <DialogTitle className="text-3xl font-bold text-black dark:text-white">
-              Your AI Lecture Script
-            </DialogTitle>
-            <Button variant="ghost" size="icon" onClick={onClose} className="hover:bg-gray-100 dark:hover:bg-gray-800">
-              <X className="h-5 w-5" />
-            </Button>
-          </div>
+          <DialogTitle className="text-3xl font-bold text-black dark:text-white">
+            Your AI Lecture Script
+          </DialogTitle>
           <DialogDescription className="text-base">
             <div className="flex gap-3 mt-3 flex-wrap">
               <span className="px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 text-black dark:text-white text-sm font-medium border border-gray-200 dark:border-gray-700">
@@ -143,12 +138,12 @@ export const LectureModal = ({ isOpen, onClose, lecture }: LectureModalProps) =>
           </DialogDescription>
         </DialogHeader>
 
-        <Tabs defaultValue="script" className="flex-1 overflow-hidden flex flex-col mt-4">
-          <TabsList className={`grid w-full ${videoUrl ? 'grid-cols-4' : 'grid-cols-3'} bg-gray-100 dark:bg-gray-800 p-1`}>
-            <TabsTrigger value="script" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-900">Script</TabsTrigger>
-            <TabsTrigger value="scenes" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-900">Scenes</TabsTrigger>
-            {videoUrl && <TabsTrigger value="video" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-900">Video</TabsTrigger>}
-            <TabsTrigger value="history" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-900">
+        <Tabs defaultValue="script" className="flex-1 overflow-hidden flex flex-col mt-4 min-h-0">
+          <TabsList className={`grid w-full ${videoUrl ? 'grid-cols-4' : 'grid-cols-3'} bg-gray-100 dark:bg-gray-800 p-1 rounded-lg flex-shrink-0`}>
+            <TabsTrigger value="script" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-900 rounded-md text-gray-700 dark:text-gray-300 data-[state=active]:text-black dark:data-[state=active]:text-white font-medium">Script</TabsTrigger>
+            <TabsTrigger value="scenes" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-900 rounded-md text-gray-700 dark:text-gray-300 data-[state=active]:text-black dark:data-[state=active]:text-white font-medium">Scenes</TabsTrigger>
+            {videoUrl && <TabsTrigger value="video" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-900 rounded-md text-gray-700 dark:text-gray-300 data-[state=active]:text-black dark:data-[state=active]:text-white font-medium">Video</TabsTrigger>}
+            <TabsTrigger value="history" className="data-[state=active]:bg-white dark:data-[state=active]:bg-gray-900 rounded-md text-gray-700 dark:text-gray-300 data-[state=active]:text-black dark:data-[state=active]:text-white font-medium">
               <History className="h-4 w-4 mr-2" />
               History
             </TabsTrigger>
@@ -349,9 +344,9 @@ export const LectureModal = ({ isOpen, onClose, lecture }: LectureModalProps) =>
           </TabsContent>
         </Tabs>
 
-        <div className="mt-6">
-          {showSettings ? (
-            <Card className="p-6 mb-4 bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700">
+        <div className="mt-6 relative">
+          {showSettings && (
+            <Card className="absolute bottom-0 left-0 right-0 p-6 mb-4 bg-gray-50 dark:bg-gray-800 border-gray-200 dark:border-gray-700 shadow-xl z-10">
               <h3 className="text-lg font-semibold mb-4 flex items-center gap-2 text-black dark:text-white">
                 <Settings className="h-5 w-5" />
                 Video Generation Settings
@@ -394,28 +389,29 @@ export const LectureModal = ({ isOpen, onClose, lecture }: LectureModalProps) =>
                 </Button>
               </div>
             </Card>
-          ) : null}
-          
-          <div className="flex justify-center gap-3">
-            <Button
-              onClick={() => setShowSettings(!showSettings)}
-              variant="outline"
-              size="lg"
-              className="border-gray-300 dark:border-gray-600"
-            >
-              <Settings className="h-5 w-5 mr-2" />
-              Settings
-            </Button>
-            <Button
-              onClick={generateVideo}
-              disabled={isGeneratingVideo}
-              size="lg"
-              className="bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-black"
-            >
-              <Video className="h-5 w-5 mr-2" />
-              {isGeneratingVideo ? "Generating Video..." : "Generate Video"}
-            </Button>
-          </div>
+          )}
+          {!showSettings && (
+            <div className="flex justify-center gap-3">
+              <Button
+                onClick={() => setShowSettings(true)}
+                variant="outline"
+                size="lg"
+                className="border-gray-300 dark:border-gray-600"
+              >
+                <Settings className="h-5 w-5 mr-2" />
+                Settings
+              </Button>
+              <Button
+                onClick={generateVideo}
+                disabled={isGeneratingVideo}
+                size="lg"
+                className="bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-black"
+              >
+                <Video className="h-5 w-5 mr-2" />
+                {isGeneratingVideo ? "Generating Video..." : "Generate Video"}
+              </Button>
+            </div>
+          )}
         </div>
       </DialogContent>
     </Dialog>
