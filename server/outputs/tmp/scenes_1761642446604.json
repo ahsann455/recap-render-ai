@@ -1,0 +1,58 @@
+{
+  "size": [
+    1280,
+    720
+  ],
+  "theme": "dark",
+  "fps": 24,
+  "scenes": [
+    {
+      "title": "Scene 1",
+      "visual": "",
+      "narration": "Here's the breakdown of the lecture script into scenes for video production:  **Scene 1: Introduction to Calculus**",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-06-21-978Z.mp4"
+    },
+    {
+      "title": "Visual description: Animated text \"Calculus\" appears on screen, with a subtle background animation of changing patterns or shapes to represent change.",
+      "visual": "",
+      "narration": "**Scene 2: Two Main Ideas of Calculus**",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-06-30-701Z.mp4"
+    },
+    {
+      "title": "Visual description: Simple animations illustrating the concepts of differentiation (e.g., a ball moving, with velocity vectors) and integration (e.g., a accumulating area under a curve).",
+      "visual": "",
+      "narration": "**Scene 3: Introduction to Differential Calculus**",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-06-38-960Z.mp4"
+    },
+    {
+      "title": "Visual description: Text \"Differential Calculus\" appears on screen, with an animation of a function graph and a tangent line representing the derivative.",
+      "visual": "",
+      "narration": "**Scene 4: Derivative Explanation**",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-06-48-502Z.mp4"
+    },
+    {
+      "title": "Visual description: Animated mathematical notation, with the function 𝑓(𝑥) and its derivative 𝑓′(𝑥) displayed on screen, along with a simple illustration of the limit definition.",
+      "visual": "",
+      "narration": "**Scene 5: Example of Derivative**",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-06-56-504Z.mp4"
+    },
+    {
+      "title": "Visual description: Graph of the function 𝑦 = 𝑥² appears on screen, with an animation of the tangent line at a point 𝑥, illustrating the slope.",
+      "visual": "",
+      "narration": "**Scene 6: Introduction to Integral Calculus**",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-07-06-313Z.mp4"
+    },
+    {
+      "title": "Visual description: Text \"Integral Calculus\" appears on screen, with an animation of a accumulating area under a curve.",
+      "visual": "",
+      "narration": "**Scene 7: Integral Explanation**",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-07-15-444Z.mp4"
+    },
+    {
+      "title": "Visual description: Animated mathematical notation, with the integral sign and the function 𝑓(𝑥) displayed on screen, along with a simple illustration of the area under the curve and the limit definition.",
+      "visual": "",
+      "narration": "Note: The duration of each scene is an estimate, and the actual duration may vary depending on the pace of the narration and the complexity of the visual descriptions.",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-07-25-539Z.mp4"
+    }
+  ]
+}

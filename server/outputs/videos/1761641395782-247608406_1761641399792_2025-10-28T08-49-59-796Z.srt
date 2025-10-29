@@ -1,0 +1,55 @@
+1
+00:00:00,000 --> 00:00:03,977
+Calculus is the study of how things change..
+
+2
+00:00:03,977 --> 00:00:10,666
+It helps us analyze motion, growth, decay, optimization, and accumulation.
+
+3
+00:00:10,666 --> 00:00:19,797
+There are two main ideas: Differentiation → finding the rate of change (like velocity from position).
+
+4
+00:00:19,797 --> 00:00:26,577
+Integration → finding the total accumulation (like distance from velocity).
+
+5
+00:00:26,577 --> 00:00:27,377
+⚙️ 2.
+
+6
+00:00:27,377 --> 00:00:35,422
+The Two Branches of Calculus (a) Differential Calculus Focuses on how a quantity changes.
+
+7
+00:00:35,422 --> 00:00:38,586
+The main concept is the derivative.
+
+8
+00:00:38,586 --> 00:00:48,711
+For a function 𝑓 ( 𝑥 ) f(x), the derivative 𝑓 ′ ( 𝑥 ) f ′ (x) tells us how fast 𝑓 f changes with respect to 𝑥 x.
+
+9
+00:00:48,711 --> 00:01:03,897
+Mathematically: 𝑓 ′ ( 𝑥 ) = lim ⁡ ℎ → 0 𝑓 ( 𝑥 + ℎ ) − 𝑓 ( 𝑥 ) ℎ f ′ (x)= h→0 lim ​ h f(x+h)−f(x) ​ Example: If 𝑓 ( 𝑥 ) = 𝑥 2 f(x)=x 2 , then 𝑓 ′ ( 𝑥 ) = 2 𝑥 f ′ (x)=2x.
+
+10
+00:01:03,897 --> 00:01:09,773
+This means the slope of 𝑦 = 𝑥 2 y=x 2 at any point 𝑥 x is 2 𝑥 2x.
+
+11
+00:01:09,773 --> 00:01:15,649
+(b) Integral Calculus Focuses on the total or accumulated change.
+
+12
+00:01:15,649 --> 00:01:18,632
+The main concept is the integral.
+
+13
+00:01:18,632 --> 00:01:24,327
+It can be thought of as the area under the curve of a function.
+
+14
+00:01:24,327 --> 00:01:37,629
+Mathematically (for the definite integral): ∫ 𝑎 𝑏 𝑓 ( 𝑥 ) 𝑑 𝑥 = lim ⁡ 𝑛 → ∞ ∑ 𝑖 = 1 𝑛 𝑓 ( 𝑥 𝑖 ∗ ) Δ 𝑥 ∫ a b ​ f(x)dx= n→∞ lim ​ i=1 ∑ n ​ f(x i ∗ ​ )Δx

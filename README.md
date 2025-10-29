@@ -1,6 +1,6 @@
 Converting boring notes into engaging lectures using the help of AI.
 
-Tech stack using boilerplate vite.js
+Tech stack: Vite.js frontend + Node/Express API + Python (MoviePy) generator.
 
 ## Make a video lecture from your notes
 
