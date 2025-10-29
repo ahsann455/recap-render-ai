@@ -48,7 +48,7 @@ export const LectureModal = ({ isOpen, onClose, lecture }: LectureModalProps) =>
       const result = await api.generateVideo(lecture.script, {
         provider: 'did',
         voiceId: 'en-US-JennyNeural',
-        driverUrl: 'https://d-id-public-bucket.s3.amazonaws.com/or-roman.jpg',
+        driverUrl: 'https://create-images-results.d-id.com/DefaultPresenters/Noelle_f/image.jpeg',
         ratio: '16:9'
       });
       
