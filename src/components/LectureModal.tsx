@@ -43,20 +43,20 @@ export const LectureModal = ({ isOpen, onClose, lecture }: LectureModalProps) =>
   const generateVideo = async () => {
     setIsGeneratingVideo(true);
     try {
-      toast.info("Generating video... This may take a few minutes.");
+      toast.info("Generating AI avatar video with D-ID... This may take a few minutes.");
       
       const result = await api.generateVideo(lecture.script, {
-        ttsProvider: 'edge',
-        theme: 'dark',
-        fps: 24,
-        width: 1280,
-        height: 720,
+        provider: 'did',
+        voiceId: 'en-US-JennyNeural',
+        driverUrl: 'https://d-id-public-bucket.s3.amazonaws.com/or-roman.jpg',
+        ratio: '16:9'
       });
       
       toast.success("Video generated successfully!");
       
       // Download the video
-      const videoUrl = `http://localhost:5000${result.videoUrl}`;
+      const baseUrl = import.meta.env.PROD ? 'http://localhost:5000' : '';
+      const videoUrl = `${baseUrl}${result.videoUrl}`;
       const a = document.createElement('a');
       a.href = videoUrl;
       a.download = result.videoUrl.split('/').pop();

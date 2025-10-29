@@ -1,4 +1,6 @@
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.PROD 
+  ? 'http://localhost:5000/api' 
+  : '/api'; // Use Vite proxy in development
 
 export interface UploadResponse {
   success: boolean;
@@ -25,6 +27,12 @@ export interface LectureResponse {
 }
 
 export interface VideoGenerationOptions {
+  provider?: 'did' | 'did-scene' | 'default';
+  // D-ID specific options
+  voiceId?: string;
+  driverUrl?: string;
+  ratio?: string;
+  // Default provider options
   ttsProvider?: string;
   theme?: string;
   fps?: number;
