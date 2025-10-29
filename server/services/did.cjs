@@ -4,8 +4,10 @@ const fs = require('fs').promises;
 const DID_API_BASE = 'https://api.d-id.com';
 
 function authHeader(apiKey) {
-  const token = Buffer.from(`${apiKey}:`).toString('base64');
-  return `Basic ${token}`;
+  // D-ID expects the API key directly as Basic auth
+  // The key format should be: email:password already encoded in the .env
+  console.log('[D-ID] Using API key:', apiKey.substring(0, 10) + '...');
+  return `Basic ${apiKey}`;
 }
 
 const fetchFn = (...args) => (typeof fetch === 'function' ? fetch(...args) : import('node-fetch').then(m => m.default(...args)));
@@ -21,21 +23,29 @@ async function httpJson(url, opts = {}) {
 }
 
 async function createTalk({ text, voiceId = 'en-US-JennyNeural', driverUrl = 'https://create-images-results.d-id.com/DefaultPresenters/Noelle_f/image.jpeg', ratio = '16:9' }, apiKey) {
+  if (!apiKey) {
+    throw new Error('D-ID API key is required');
+  }
+  
+  const payload = {
+    script: {
+      type: 'text',
+      input: text,
+      provider: { type: 'microsoft', voice_id: voiceId },
+    },
+    source_url: driverUrl,
+    config: { ratio }
+  };
+  
+  console.log('[D-ID] Creating talk with payload:', JSON.stringify(payload, null, 2));
+  
   return httpJson(`${DID_API_BASE}/talks`, {
     method: 'POST',
     headers: {
       'Authorization': authHeader(apiKey),
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-      script: {
-        type: 'text',
-        input: text,
-        provider: { type: 'microsoft', voice_id: voiceId },
-      },
-      source_url: driverUrl,
-      config: { ratio }
-    })
+    body: JSON.stringify(payload)
   });
 }
 
@@ -67,12 +77,33 @@ async function downloadToFile(url, outPath) {
 }
 
 async function generateDidVideo({ text, voiceId, driverUrl, ratio }, outDir, apiKey) {
-  const { id } = await createTalk({ text, voiceId, driverUrl, ratio }, apiKey);
-  const resultUrl = await pollTalk(id, apiKey);
-  const ts = new Date().toISOString().replace(/[:.]/g, '-');
-  const outMp4 = path.join(outDir, `did_${ts}.mp4`);
-  await downloadToFile(resultUrl, outMp4);
-  return outMp4;
+  console.log('[D-ID] Starting video generation...');
+  console.log('[D-ID] Text length:', text.length, 'characters');
+  console.log('[D-ID] Voice:', voiceId);
+  console.log('[D-ID] Avatar URL:', driverUrl);
+  
+  // D-ID has a character limit (usually around 10000)
+  if (text.length > 10000) {
+    throw new Error(`Text is too long (${text.length} chars). D-ID supports max ~10000 characters.`);
+  }
+  
+  try {
+    const { id } = await createTalk({ text, voiceId, driverUrl, ratio }, apiKey);
+    console.log('[D-ID] Talk created with ID:', id);
+    
+    const resultUrl = await pollTalk(id, apiKey);
+    console.log('[D-ID] Video ready at:', resultUrl);
+    
+    const ts = new Date().toISOString().replace(/[:.]/g, '-');
+    const outMp4 = path.join(outDir, `did_${ts}.mp4`);
+    await downloadToFile(resultUrl, outMp4);
+    console.log('[D-ID] Video downloaded to:', outMp4);
+    
+    return outMp4;
+  } catch (error) {
+    console.error('[D-ID] Error details:', error);
+    throw error;
+  }
 }
 
 module.exports = { generateDidVideo, createTalk, pollTalk, downloadToFile };

@@ -5,35 +5,56 @@ import { UploadSection } from "@/components/UploadSection";
 
 const Index = () => {
   const scrollToUpload = () => {
-    document.getElementById('upload')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('upload-section')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
-      {/* Premium Background Effects */}
-      <div className="fixed inset-0 bg-gradient-to-br from-background via-purple-950/5 to-background pointer-events-none" />
-      <div className="fixed top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_var(--tw-gradient-stops))] from-purple-600/5 via-transparent to-transparent pointer-events-none" />
-      <div className="fixed bottom-0 right-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-pink-600/5 via-transparent to-transparent pointer-events-none" />
+    <div className="min-h-screen bg-white dark:bg-gray-950">
+      <Hero onGetStarted={scrollToUpload} />
+      <HowItWorks />
+      <Features />
+      <UploadSection />
       
-      <div className="relative z-10">
-        <Hero onGetStarted={scrollToUpload} />
-        <HowItWorks />
-        <Features />
-        <UploadSection />
-        
-        {/* Premium Footer */}
-        <footer className="py-12 px-6 border-t border-white/10 glass">
-          <div className="max-w-7xl mx-auto text-center">
-            <div className="mb-4">
-              <h3 className="text-2xl font-bold gradient-text mb-2">ClassroomAI</h3>
-              <p className="text-muted-foreground/80">Transform your learning experience with AI-powered video lectures</p>
+      {/* Footer */}
+      <footer className="py-12 px-6 border-t border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-950">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-4 gap-8 mb-8">
+            {/* Brand */}
+            <div className="md:col-span-2">
+              <h3 className="text-xl font-bold mb-3 text-black dark:text-white">myTeacherAI</h3>
+              <p className="text-gray-600 dark:text-gray-400 mb-4">
+                Transform your learning experience with AI-powered video lectures
+              </p>
             </div>
-            <p className="text-sm text-muted-foreground/60">
-              © 2025 ClassroomAI. All rights reserved.
+            
+            {/* Product */}
+            <div>
+              <h4 className="font-semibold mb-3 text-black dark:text-white">Product</h4>
+              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                <li>Features</li>
+                <li>Pricing</li>
+                <li>API</li>
+              </ul>
+            </div>
+            
+            {/* Company */}
+            <div>
+              <h4 className="font-semibold mb-3 text-black dark:text-white">Company</h4>
+              <ul className="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+                <li>About</li>
+                <li>Blog</li>
+                <li>Contact</li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="pt-8 border-t border-gray-200 dark:border-gray-800 text-center">
+            <p className="text-sm text-gray-600 dark:text-gray-400">
+              © 2025 myTeacherAI. All rights reserved.
             </p>
           </div>
-        </footer>
-      </div>
+        </div>
+      </footer>
     </div>
   );
 };

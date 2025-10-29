@@ -14,21 +14,18 @@ const modes = [
     id: "summary" as LectureMode,
     name: "Summary Mode",
     description: "Quick overview of key concepts",
-    color: "accent-summary",
     icon: Zap
   },
   {
     id: "detailed" as LectureMode,
     name: "Detailed Mode",
     description: "In-depth explanations",
-    color: "accent-detailed",
     icon: BookOpen
   },
   {
     id: "test" as LectureMode,
     name: "Test Prep Mode",
     description: "Practice questions & solutions",
-    color: "accent-test",
     icon: Target
   }
 ];
@@ -61,7 +58,6 @@ export const UploadSection = () => {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    // Check file type
     const validTypes = ['.pdf', '.doc', '.docx', '.txt'];
     const fileExtension = '.' + file.name.split('.').pop()?.toLowerCase();
 
@@ -106,46 +102,37 @@ export const UploadSection = () => {
   };
 
   return (
-    <section id="upload" className="py-32 px-6 relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-purple-950/5 to-background" />
-      <div className="absolute top-0 left-1/2 w-[800px] h-[800px] bg-purple-500/20 rounded-full blur-[120px] -translate-x-1/2" />
-      
-      <div className="max-w-6xl mx-auto relative z-10">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            Create Your
-            <span className="block mt-3 gradient-text">
-              AI Lecture
-            </span>
+    <section id="upload-section" className="py-20 px-6 bg-gray-50 dark:bg-gray-900">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black dark:text-white">
+            Create Your AI Lecture
           </h2>
-          <p className="text-xl text-muted-foreground/80">
-            Choose your learning style and let our AI craft the perfect experience
+          <p className="text-lg text-gray-600 dark:text-gray-400">
+            Choose your learning style and upload your notes
           </p>
         </div>
 
         {/* Mode Selection */}
         <div className="mb-12">
-          <h3 className="text-2xl font-bold mb-6 text-center">Select Learning Mode</h3>
-          <div className="grid md:grid-cols-3 gap-6">
+          <h3 className="text-xl font-semibold mb-6 text-center text-black dark:text-white">
+            Select Learning Mode
+          </h3>
+          <div className="grid md:grid-cols-3 gap-4">
             {modes.map((mode) => (
               <Card
                 key={mode.id}
-                className={`p-6 cursor-pointer transition-all duration-500 group ${
+                className={`p-6 cursor-pointer transition-all duration-200 border-2 ${
                   selectedMode === mode.id
-                    ? 'glass-card shadow-glow scale-105 border-primary/50'
-                    : 'glass hover:bg-white/10 hover:scale-105'
+                    ? 'border-black dark:border-white bg-white dark:bg-gray-800 shadow-lg'
+                    : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600'
                 }`}
                 onClick={() => setSelectedMode(mode.id)}
               >
-                <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                  <mode.icon className="h-12 w-12 text-primary" />
-                </div>
-                <h4 className="text-xl font-bold mb-2 group-hover:gradient-text transition-all">{mode.name}</h4>
-                <p className="text-sm text-muted-foreground/80">{mode.description}</p>
-                {selectedMode === mode.id && (
-                  <div className="mt-4 w-full h-1 gradient-primary rounded-full" />
-                )}
+                <mode.icon className={`h-10 w-10 mb-4 ${selectedMode === mode.id ? 'text-black dark:text-white' : 'text-gray-600 dark:text-gray-400'}`} />
+                <h4 className="text-lg font-bold mb-2 text-black dark:text-white">{mode.name}</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{mode.description}</p>
               </Card>
             ))}
           </div>
@@ -153,55 +140,49 @@ export const UploadSection = () => {
 
         {/* Style Selection */}
         <div className="mb-12">
-          <h3 className="text-2xl font-bold mb-6 text-center">Select Lecture Style</h3>
-          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto">
+          <h3 className="text-xl font-semibold mb-6 text-center text-black dark:text-white">
+            Select Lecture Style
+          </h3>
+          <div className="grid md:grid-cols-2 gap-4 max-w-3xl mx-auto">
             {styles.map((style) => (
               <Card
                 key={style.id}
-                className={`p-6 cursor-pointer transition-all duration-500 group ${
+                className={`p-6 cursor-pointer transition-all duration-200 border-2 ${
                   selectedStyle === style.id
-                    ? 'glass-card shadow-glow scale-105 border-primary/50'
-                    : 'glass hover:bg-white/10 hover:scale-105'
+                    ? 'border-black dark:border-white bg-white dark:bg-gray-800 shadow-lg'
+                    : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 hover:border-gray-300 dark:hover:border-gray-600'
                 }`}
                 onClick={() => setSelectedStyle(style.id)}
               >
-                <div className="mb-4 transform group-hover:scale-110 transition-transform duration-300">
-                  <style.icon className="h-12 w-12 text-primary" />
-                </div>
-                <h4 className="text-xl font-bold mb-2 group-hover:gradient-text transition-all">{style.name}</h4>
-                <p className="text-sm text-muted-foreground/80">{style.description}</p>
-                {selectedStyle === style.id && (
-                  <div className="mt-4 w-full h-1 gradient-primary rounded-full" />
-                )}
+                <style.icon className={`h-10 w-10 mb-4 ${selectedStyle === style.id ? 'text-black dark:text-white' : 'text-gray-600 dark:text-gray-400'}`} />
+                <h4 className="text-lg font-bold mb-2 text-black dark:text-white">{style.name}</h4>
+                <p className="text-sm text-gray-600 dark:text-gray-400">{style.description}</p>
               </Card>
             ))}
           </div>
         </div>
 
-        {/* File Upload */}
-        <Card className="p-12 glass-card hover:bg-white/10 transition-all duration-500 relative overflow-hidden group">
-          {/* Animated Border */}
-          <div className="absolute inset-0 rounded-xl bg-gradient-to-r from-primary via-accent to-primary-glow opacity-0 group-hover:opacity-20 transition-opacity duration-500" />
-          
-          <div className="text-center relative z-10">
-            <div className="w-20 h-20 mx-auto mb-6 rounded-2xl gradient-primary flex items-center justify-center shadow-glow">
+        {/* File Upload Card */}
+        <Card className="p-10 border-2 border-dashed border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800">
+          <div className="text-center">
+            <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gray-100 dark:bg-gray-700 flex items-center justify-center">
               {isProcessing ? (
-                <Loader2 className="h-10 w-10 text-white animate-spin" />
+                <Loader2 className="h-8 w-8 text-gray-600 dark:text-gray-400 animate-spin" />
               ) : (
-                <Upload className="h-10 w-10 text-white" />
+                <Upload className="h-8 w-8 text-gray-600 dark:text-gray-400" />
               )}
             </div>
             
             {fileName ? (
-              <div className="mb-8 glass-card p-6 rounded-xl inline-block">
-                <FileText className="h-12 w-12 mx-auto mb-3 text-primary" />
-                <p className="text-lg font-semibold mb-1">{fileName}</p>
-                <p className="text-sm text-muted-foreground/80">Ready to generate your lecture</p>
+              <div className="mb-6 p-4 bg-gray-50 dark:bg-gray-700 rounded-lg inline-block">
+                <FileText className="h-8 w-8 mx-auto mb-2 text-gray-600 dark:text-gray-400" />
+                <p className="text-base font-semibold text-black dark:text-white">{fileName}</p>
+                <p className="text-sm text-gray-600 dark:text-gray-400">Ready to generate</p>
               </div>
             ) : (
               <>
-                <h3 className="text-3xl font-bold mb-3">Upload Your Notes</h3>
-                <p className="text-muted-foreground/80 mb-8 text-lg">
+                <h3 className="text-2xl font-bold mb-2 text-black dark:text-white">Upload Your Notes</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-6">
                   PDF, DOC, DOCX, or TXT files supported
                 </p>
               </>
@@ -216,21 +197,22 @@ export const UploadSection = () => {
               disabled={isProcessing}
             />
             
-            <div className="flex gap-6 justify-center flex-wrap">
+            <div className="flex gap-4 justify-center flex-wrap">
               <Button
                 size="lg"
                 onClick={() => document.getElementById('file-upload')?.click()}
                 disabled={isProcessing}
-                className="gradient-primary hover:shadow-glow transition-all duration-500 text-lg px-8 py-6 border border-white/20"
+                variant="outline"
+                className="text-base px-8 py-6 h-auto border-2 border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-700 font-semibold"
               >
                 {isProcessing ? (
                   <>
-                    <Loader2 className="mr-3 h-6 w-6 animate-spin" />
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                     Processing...
                   </>
                 ) : (
                   <>
-                    <Upload className="mr-3 h-6 w-6" />
+                    <Upload className="mr-2 h-5 w-5" />
                     {fileName ? 'Upload Different File' : 'Choose File'}
                   </>
                 )}
@@ -241,12 +223,12 @@ export const UploadSection = () => {
                   size="lg"
                   onClick={handleGenerateLecture}
                   disabled={isProcessing || !documentId}
-                  className="bg-gradient-to-r from-accent-summary via-accent-detailed to-accent-test hover:shadow-intense transition-all duration-500 text-lg px-8 py-6 border border-white/20 animate-glow"
+                  className="text-base px-8 py-6 h-auto bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-black font-semibold"
                 >
                   {isProcessing ? (
-                    <Loader2 className="mr-3 h-6 w-6 animate-spin" />
+                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
                   ) : (
-                    <Video className="mr-3 h-6 w-6" />
+                    <Video className="mr-2 h-5 w-5" />
                   )}
                   {isProcessing ? 'Generating...' : 'Generate Lecture'}
                 </Button>

@@ -106,4 +106,45 @@ router.post('/generate', async (req, res) => {
   }
 });
 
+// GET /api/video/history
+// Returns list of generated videos
+router.get('/history', async (req, res) => {
+  try {
+    const videosDir = path.join(__dirname, '..', 'outputs', 'videos');
+    
+    // Check if directory exists
+    try {
+      await fs.access(videosDir);
+    } catch {
+      return res.json({ success: true, videos: [] });
+    }
+    
+    const files = await fs.readdir(videosDir);
+    const videoFiles = files.filter(f => f.endsWith('.mp4') || f.endsWith('.webm'));
+    
+    const videos = await Promise.all(videoFiles.map(async (filename) => {
+      const filePath = path.join(videosDir, filename);
+      const stats = await fs.stat(filePath);
+      const videoUrl = `/outputs/videos/${filename}`;
+      
+      return {
+        id: filename,
+        filename,
+        videoUrl,
+        size: stats.size,
+        createdAt: stats.birthtime,
+        modifiedAt: stats.mtime
+      };
+    }));
+    
+    // Sort by creation date, newest first
+    videos.sort((a, b) => b.createdAt - a.createdAt);
+    
+    res.json({ success: true, videos });
+  } catch (error) {
+    console.error('Error fetching video history:', error);
+    res.status(500).json({ error: 'Failed to fetch video history', message: error.message });
+  }
+});
+
 module.exports = router;

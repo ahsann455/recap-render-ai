@@ -53,6 +53,20 @@ export interface VideoResponse {
   message: string;
 }
 
+export interface VideoHistoryItem {
+  id: string;
+  filename: string;
+  videoUrl: string;
+  size: number;
+  createdAt: string;
+  modifiedAt: string;
+}
+
+export interface VideoHistoryResponse {
+  success: boolean;
+  videos: VideoHistoryItem[];
+}
+
 export const api = {
   /**
    * Upload a document file
@@ -118,6 +132,20 @@ export const api = {
       throw new Error(error.message || 'Video generation failed');
     }
 
+    return response.json();
+  },
+
+  /**
+   * Get video generation history
+   */
+  async getVideoHistory(): Promise<VideoHistoryResponse> {
+    const response = await fetch(`${API_BASE_URL}/video/history`);
+    
+    if (!response.ok) {
+      const error = await response.json();
+      throw new Error(error.message || 'Failed to fetch video history');
+    }
+    
     return response.json();
   },
 

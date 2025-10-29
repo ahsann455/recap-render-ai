@@ -1,76 +1,75 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Upload, Sparkles } from "lucide-react";
+import { BookOpen, Sparkles, ArrowRight } from "lucide-react";
 
 export const Hero = ({ onGetStarted }: { onGetStarted: () => void }) => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated Gradient Background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-background via-purple-950/20 to-background">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-600/20 via-transparent to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-pink-600/10 via-transparent to-transparent" />
-      </div>
+    <section className="relative min-h-[85vh] flex items-center justify-center bg-white dark:bg-gray-950">
+      {/* Clean Background */}
+      <div className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-950 dark:to-gray-900" />
       
-      {/* Floating Orbs */}
-      <div className="absolute top-20 left-20 w-72 h-72 bg-purple-500/30 rounded-full blur-3xl animate-float" />
-      <div className="absolute bottom-20 right-20 w-96 h-96 bg-pink-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '2s' }} />
-      <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-blue-500/20 rounded-full blur-3xl animate-float" style={{ animationDelay: '4s' }} />
-
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
-        <div className="inline-flex items-center gap-2 mb-8 px-6 py-3 rounded-full glass-card animate-in fade-in slide-in-from-bottom-4 duration-700 shadow-premium">
-          <Sparkles className="w-4 h-4 text-primary" />
-          <span className="text-sm font-medium gradient-text">
-            Revolutionary AI-Powered Learning Platform
-          </span>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 text-center">
+        {/* Logo */}
+        <div className="flex items-center justify-center mb-12 animate-fade-in">
+          <div className="flex items-center gap-3">
+            <div className="relative">
+              <BookOpen className="w-10 h-10 text-black dark:text-white" />
+              <Sparkles className="w-4 h-4 text-blue-500 absolute -top-1 -right-1" />
+            </div>
+            <span className="text-2xl font-bold text-black dark:text-white">myTeacherAI</span>
+          </div>
         </div>
 
-        <h1 className="text-6xl md:text-8xl font-bold mb-8 animate-in fade-in slide-in-from-bottom-6 duration-700 delay-100 leading-tight">
-          Transform Notes Into
-          <span className="block mt-4 gradient-text animate-shimmer bg-gradient-to-r from-primary via-accent to-primary-glow">
-            Cinematic AI Lectures
+        {/* Main Headline */}
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold leading-tight mb-8 animate-fade-in">
+          <span className="text-black dark:text-white">The most realistic</span>
+          <br />
+          <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
+            AI lecture platform
           </span>
         </h1>
 
-        <p className="text-xl md:text-2xl text-muted-foreground/90 max-w-3xl mx-auto mb-12 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200 leading-relaxed">
-          Experience the future of learning with AI-generated video lectures featuring
-          <span className="text-foreground font-semibold"> virtual professors </span>
-          and
-          <span className="text-foreground font-semibold"> stunning visualizations</span>
+        {/* Subheadline */}
+        <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto mb-12 animate-fade-in animation-delay-200">
+          Over 1,000,000 students use myTeacherAI to create realistic lecture experiences.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-in fade-in slide-in-from-bottom-10 duration-700 delay-300">
+        {/* CTA Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-12 animate-fade-in animation-delay-400">
           <Button 
             size="lg" 
-            className="text-lg px-10 py-7 gradient-primary hover:shadow-glow transition-all duration-500 group border border-white/20 animate-glow"
+            className="text-lg px-10 py-7 h-auto bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-black rounded-full font-semibold transition-all duration-200 shadow-lg hover:shadow-xl group"
             onClick={onGetStarted}
           >
-            <Upload className="mr-3 h-6 w-6 group-hover:scale-110 transition-transform" />
-            Start Learning Free
-            <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-2 transition-transform" />
+            Get Started Free
+            <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
           </Button>
           
           <Button 
             size="lg" 
-            variant="outline" 
-            className="text-lg px-10 py-7 glass-card hover:bg-white/10 transition-all duration-300 border-white/20"
+            variant="outline"
+            className="text-lg px-10 py-7 h-auto rounded-full font-semibold border-2 border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-200"
+            onClick={onGetStarted}
           >
             Watch Demo
           </Button>
         </div>
 
-        {/* Premium Stats */}
-        <div className="grid grid-cols-3 gap-12 max-w-3xl mx-auto mt-24 animate-in fade-in slide-in-from-bottom-12 duration-700 delay-500">
-          <div className="glass-card p-6 rounded-2xl">
-            <div className="text-5xl font-bold gradient-text mb-2">10x</div>
-            <div className="text-sm text-muted-foreground uppercase tracking-wider">Faster Learning</div>
-          </div>
-          <div className="glass-card p-6 rounded-2xl">
-            <div className="text-5xl font-bold gradient-text mb-2">2</div>
-            <div className="text-sm text-muted-foreground uppercase tracking-wider">Lecture Styles</div>
-          </div>
-          <div className="glass-card p-6 rounded-2xl">
-            <div className="text-5xl font-bold gradient-text mb-2">3</div>
-            <div className="text-sm text-muted-foreground uppercase tracking-wider">Learning Modes</div>
+        {/* Subtitle */}
+        <p className="text-center text-sm text-gray-500 dark:text-gray-500 italic animate-fade-in animation-delay-600">
+          No credit card required • Cancel anytime
+        </p>
+
+        {/* Trusted By Section */}
+        <div className="mt-20 pt-12 border-t border-gray-200 dark:border-gray-800 animate-fade-in animation-delay-800">
+          <p className="text-sm text-gray-500 dark:text-gray-500 uppercase tracking-wider mb-8">
+            Trusted by students worldwide
+          </p>
+          <div className="flex flex-wrap items-center justify-center gap-12 opacity-60">
+            <div className="text-2xl font-bold text-gray-400 dark:text-gray-600">Stanford</div>
+            <div className="text-2xl font-bold text-gray-400 dark:text-gray-600">MIT</div>
+            <div className="text-2xl font-bold text-gray-400 dark:text-gray-600">Harvard</div>
+            <div className="text-2xl font-bold text-gray-400 dark:text-gray-600">Oxford</div>
           </div>
         </div>
       </div>

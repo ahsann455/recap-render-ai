@@ -1,80 +1,67 @@
-import { GraduationCap, Sparkles, Target, Brain, Video, FileText } from "lucide-react";
+import { Mic, Video, FileText, Brain, Target, Upload } from "lucide-react";
 import { Card } from "@/components/ui/card";
 
 const features = [
   {
-    icon: Brain,
-    title: "AI Professor Mode",
-    description: "Watch a virtual AI professor explain concepts on a digital board, just like a real classroom experience.",
-    gradient: "from-accent-detailed to-accent-detailed/70"
-  },
-  {
-    icon: Sparkles,
-    title: "Visual Learning Mode",
-    description: "Immersive AI-generated visuals that bring complex concepts to life with stunning animations and graphics.",
-    gradient: "from-primary to-primary-glow"
-  },
-  {
-    icon: FileText,
-    title: "Summary Mode",
-    description: "Get quick, concise video summaries perfect for review sessions and last-minute prep.",
-    gradient: "from-accent-summary to-accent-summary/70"
-  },
-  {
-    icon: GraduationCap,
-    title: "Detailed Mode",
-    description: "Deep dive into comprehensive explanations with step-by-step breakdowns of every concept.",
-    gradient: "from-accent-detailed to-accent-detailed/70"
-  },
-  {
-    icon: Target,
-    title: "Test Prep Mode",
-    description: "Practice with AI-generated questions and solutions based on your study materials.",
-    gradient: "from-accent-test to-accent-test/70"
+    icon: Mic,
+    title: "Text to Speech",
+    description: "Professional AI voices that bring your lecture scripts to life with natural intonation."
   },
   {
     icon: Video,
-    title: "Multiple Formats",
-    description: "Upload PDFs, Word documents, or text files - we handle all your note formats seamlessly.",
-    gradient: "from-primary to-primary-glow"
+    title: "AI Avatars",
+    description: "Realistic AI presenters that deliver your content with engaging visual presence."
+  },
+  {
+    icon: FileText,
+    title: "Smart Summarization",
+    description: "Automatically extract key concepts and create concise, focused lecture content."
+  },
+  {
+    icon: Brain,
+    title: "Deep Learning",
+    description: "Advanced AI understands your content and structures it for optimal learning."
+  },
+  {
+    icon: Target,
+    title: "Test Preparation",
+    description: "Generate practice questions and study materials tailored to your notes."
+  },
+  {
+    icon: Upload,
+    title: "Easy Upload",
+    description: "Support for PDF, Word, and text files - get started in seconds."
   }
 ];
 
 export const Features = () => {
   return (
-    <section className="py-32 px-6 relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-purple-950/10 to-background" />
-      <div className="absolute top-1/2 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-pink-500/10 rounded-full blur-3xl" />
-      
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-bold mb-6">
-            Powerful Features for
-            <span className="block mt-3 gradient-text">
-              Next-Gen Learning
-            </span>
+    <section className="py-20 px-6 bg-white dark:bg-gray-950">
+      <div className="max-w-7xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black dark:text-white">
+            Everything you need to learn better
           </h2>
-          <p className="text-xl text-muted-foreground/80 max-w-2xl mx-auto leading-relaxed">
-            Everything you need to transform passive note-reading into immersive, 
-            AI-powered video experiences
+          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+            Powerful AI features designed to transform your notes into engaging lectures
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, index) => (
             <Card 
               key={index}
-              className="glass-card p-8 hover:bg-white/10 transition-all duration-500 hover:shadow-premium group cursor-pointer hover:scale-105 hover:-translate-y-1"
+              className="p-8 border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 hover:shadow-lg transition-shadow duration-200"
             >
-              <div className={`w-14 h-14 rounded-2xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-glow`}>
-                <feature.icon className="h-7 w-7 text-white" />
+              <div className="w-12 h-12 rounded-lg bg-gray-100 dark:bg-gray-800 flex items-center justify-center mb-6">
+                <feature.icon className="h-6 w-6 text-black dark:text-white" />
               </div>
-              <h3 className="text-2xl font-bold mb-3 group-hover:gradient-text transition-all">
+              <h3 className="text-xl font-bold mb-3 text-black dark:text-white">
                 {feature.title}
               </h3>
-              <p className="text-muted-foreground/80 leading-relaxed">
+              <p className="text-gray-600 dark:text-gray-400 leading-relaxed">
                 {feature.description}
               </p>
             </Card>
