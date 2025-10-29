@@ -1,0 +1,59 @@
+1
+00:00:00,000 --> 00:00:02,961
+# Introduction to Linear Regression.
+
+2
+00:00:02,961 --> 00:00:05,265
+- What is linear regression?
+
+3
+00:00:05,265 --> 00:00:09,214
+- Why it matters: prediction and interpretation.
+
+4
+00:00:09,214 --> 00:00:15,220
+- Core assumptions: linearity, independence, homoscedasticity, normality.
+
+5
+00:00:15,220 --> 00:00:16,260
+## The Model.
+
+6
+00:00:16,260 --> 00:00:25,625
+We model the relationship between a dependent variable and one or more independent variables using a linear equation.
+
+7
+00:00:25,625 --> 00:00:26,585
+- Simple vs.
+
+8
+00:00:26,585 --> 00:00:28,106
+multiple regression
+
+9
+00:00:28,106 --> 00:00:31,308
+- Parameters: intercept and coefficients
+
+10
+00:00:31,308 --> 00:00:34,829
+- Error term represents unexplained variance
+
+11
+00:00:34,829 --> 00:00:38,248
+## Fitting and Evaluation.
+
+12
+00:00:38,248 --> 00:00:42,192
+- Ordinary Least Squares (OLS)
+
+13
+00:00:42,192 --> 00:00:44,559
+- Train/test split
+
+14
+00:00:44,559 --> 00:00:47,451
+- R-squared, RMSE, MAE
+
+15
+00:00:47,451 --> 00:00:49,949
+- Residual analysis

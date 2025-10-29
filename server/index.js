@@ -4,7 +4,9 @@ const cors = require('cors');
 const uploadRoutes = require('./routes/upload');
 const lectureRoutes = require('./routes/lecture');
 const videoRoutes = require('./routes/video');
+const authRoutes = require('./routes/auth');
 const path = require('path');
+const db = require('./db/database'); // Initialize database
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -27,6 +29,7 @@ app.use('/outputs', express.static(path.join(__dirname, 'outputs'), {
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
+app.use('/api/auth', authRoutes);
 app.use('/api/upload', uploadRoutes);
 app.use('/api/lecture', lectureRoutes);
 app.use('/api/video', videoRoutes);

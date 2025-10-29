@@ -1,0 +1,58 @@
+{
+  "size": [
+    1280,
+    720
+  ],
+  "theme": "dark",
+  "fps": 24,
+  "scenes": [
+    {
+      "title": "Scene 1",
+      "visual": "",
+      "narration": "Here's the breakdown of the lecture script into scenes for video production:  **Scene 1: Introduction to Calculus**",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-12-33-947Z.mp4"
+    },
+    {
+      "title": "Visual description: A simple animation of a graph or a moving object with a subtle background texture, conveying the idea of change and movement.",
+      "visual": "",
+      "narration": "**Scene 2: Two Main Ideas of Calculus**",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-12-44-966Z.mp4"
+    },
+    {
+      "title": "Visual description: A split-screen animation, with a velocity graph on one side and a distance graph on the other, highlighting the concepts of differentiation and integration.",
+      "visual": "",
+      "narration": "**Scene 3: Introduction to Differential Calculus**",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-12-53-924Z.mp4"
+    },
+    {
+      "title": "Visual description: A 3D animation of a function graph with a moving point, illustrating how the derivative represents the rate of change.",
+      "visual": "",
+      "narration": "**Scene 4: Mathematical Representation of Derivative**",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-13-01-823Z.mp4"
+    },
+    {
+      "title": "Visual description: An animated equation on screen, with each part of the formula highlighted as it's being explained, and a simple graph in the background to illustrate the concept.",
+      "visual": "",
+      "narration": "**Scene 5: Example of Derivative**",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-13-10-548Z.mp4"
+    },
+    {
+      "title": "Visual description: A graph of the function 𝑦 = 𝑥 2 with a tangent line at a point, illustrating the concept of slope and derivative.",
+      "visual": "",
+      "narration": "**Scene 6: Introduction to Integral Calculus**",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-13-18-336Z.mp4"
+    },
+    {
+      "title": "Visual description: An animation of a function graph with a growing area under the curve, illustrating the concept of accumulation.",
+      "visual": "",
+      "narration": "**Scene 7: Mathematical Representation of Integral**",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-13-26-863Z.mp4"
+    },
+    {
+      "title": "Visual description: An animated equation on screen, with each part of the formula highlighted as it's being explained, and a graph in the background to illustrate the concept of area under the curve.",
+      "visual": "",
+      "narration": "Note: The duration of each scene is an estimate and can be adjusted based on the actual pacing of the narration and the visual elements.",
+      "avatar_video": "C:\\Users\\333ah\\recap-render-ai\\server\\outputs\\videos\\did_2025-10-28T09-13-37-691Z.mp4"
+    }
+  ]
+}
