@@ -1,73 +1,27 @@
 import { Button } from "@/components/ui/button";
-import { BookOpen, Sparkles, ArrowRight, User, LogOut } from "lucide-react";
-import { useState } from "react";
-import { useAuth } from "@/contexts/AuthContext";
-import { AuthModal } from "@/components/AuthModal";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 export const Hero = ({ onGetStarted }: { onGetStarted: () => void }) => {
-  const { user, logout } = useAuth();
-  const [showAuthModal, setShowAuthModal] = useState(false);
-  const [authTab, setAuthTab] = useState<'login' | 'signup'>('login');
+  const universities = [
+    "Stanford",
+    "MIT",
+    "Harvard",
+    "Oxford",
+    "Cambridge",
+    "Yale",
+    "Princeton",
+    "Columbia",
+    "Berkeley",
+  ];
+  // Ensure the marquee fills wide screens: two identical halves
+  const halfTrack = [...universities, ...universities];
+  const marqueeItems = [...halfTrack, ...halfTrack];
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-white dark:bg-gray-950">
       {/* Content */}
       <div className="relative z-10 w-full px-6 py-8">
-        {/* Header with Logo and Auth */}
-        <nav className="max-w-7xl mx-auto flex items-center justify-between mb-16 animate-fade-in">
-          <div className="flex items-center gap-2">
-            <BookOpen className="w-6 h-6 text-black dark:text-white" />
-            <span className="text-lg font-bold text-black dark:text-white">myTeacherAI</span>
-          </div>
-          
-          {/* Auth Buttons / User Menu */}
-          <div className="flex items-center gap-3">
-            {user ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <Button variant="ghost" className="hover:bg-gray-100 dark:hover:bg-gray-800 text-black dark:text-white">
-                    <User className="h-4 w-4 mr-2" />
-                    {user.name}
-                  </Button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent className="bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-800">
-                  <DropdownMenuLabel>My Account</DropdownMenuLabel>
-                  <DropdownMenuSeparator />
-                  <DropdownMenuItem onClick={logout} className="cursor-pointer">
-                    <LogOut className="h-4 w-4 mr-2" />
-                    Logout
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <>
-                <Button 
-                  variant="ghost" 
-                  onClick={() => { setAuthTab('login'); setShowAuthModal(true); }}
-                  className="hover:bg-transparent text-black dark:text-white font-normal"
-                >
-                  LOGIN
-                </Button>
-                <Button 
-                  onClick={() => { setAuthTab('signup'); setShowAuthModal(true); }}
-                  className="bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-black font-semibold rounded-full px-6"
-                >
-                  SIGN UP
-                </Button>
-              </>
-            )}
-          </div>
-        </nav>
-
         {/* Main Content Grid */}
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 items-center mt-6">
           {/* Left Column - Text Content */}
           <div className="text-left animate-fade-in">
             {/* Main Headline */}
@@ -79,7 +33,7 @@ export const Hero = ({ onGetStarted }: { onGetStarted: () => void }) => {
 
             {/* Subheadline */}
             <p className="text-lg text-gray-600 dark:text-gray-400 mb-6 max-w-xl animate-fade-in animation-delay-200">
-              Over 1,000,000 students use myTeacherAI to create realistic lecture experiences.
+Over 1,000,000 students use MyTeacherAI to create realistic lecture experiences.
             </p>
 
             {/* CTA Buttons */}
@@ -93,7 +47,7 @@ export const Hero = ({ onGetStarted }: { onGetStarted: () => void }) => {
               
               <Button 
                 variant="outline"
-                className="text-sm px-6 py-5 h-auto rounded-md font-semibold border-2 border-gray-300 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-200 uppercase"
+                className="text-sm px-6 py-5 h-auto rounded-md font-semibold border-2 border-gray-300 dark:border-gray-700 bg-white text-black dark:bg-gray-950 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-200 uppercase"
                 onClick={onGetStarted}
               >
                 Talk to Sales
@@ -125,34 +79,12 @@ export const Hero = ({ onGetStarted }: { onGetStarted: () => void }) => {
           </div>
         </div>
 
-        {/* Trusted By Logos - Full Width Animated Marquee */}
+        {/* Trusted By Logos - Infinite Marquee */}
         <div className="mt-16 w-full overflow-hidden animate-fade-in animation-delay-800">
-          <div className="relative">
-            <div className="flex animate-marquee whitespace-nowrap">
-              <div className="flex items-center gap-10 pr-10">
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Stanford</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">MIT</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Harvard</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Oxford</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Cambridge</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Yale</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Princeton</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Columbia</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Berkeley</div>
-              </div>
-              {/* Duplicate for seamless loop */}
-              <div className="flex items-center gap-10 pr-10" aria-hidden="true">
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Stanford</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">MIT</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Harvard</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Oxford</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Cambridge</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Yale</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Princeton</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Columbia</div>
-                <div className="text-base font-semibold text-gray-600 dark:text-gray-400">Berkeley</div>
-              </div>
-            </div>
+          <div className="animate-marquee flex w-max items-center gap-12 whitespace-nowrap">
+            {marqueeItems.map((u, i) => (
+              <div key={i} className="text-base font-semibold text-gray-600 dark:text-gray-400">{u}</div>
+            ))}
           </div>
         </div>
 
@@ -164,11 +96,6 @@ export const Hero = ({ onGetStarted }: { onGetStarted: () => void }) => {
         </div>
       </div>
 
-      <AuthModal 
-        isOpen={showAuthModal} 
-        onClose={() => setShowAuthModal(false)}
-        defaultTab={authTab}
-      />
     </section>
   );
 };

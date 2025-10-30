@@ -50,7 +50,7 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply bg-white text-black antialiased;
     font-feature-settings: "cv11", "ss01";
     font-variation-settings: "opsz" auto;
   }
@@ -138,19 +138,16 @@
   }
   
   .animate-marquee {
-    animation: marquee 20s linear infinite;
+    animation: marquee 25s linear infinite;
+    will-change: transform;
+  }
+  .animate-marquee2 {
+    animation: marquee2 25s linear infinite;
+    will-change: transform;
   }
   
   @keyframes marquee {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-50%);
-    }
-  }
-  
-  .animate-marquee:hover {
-    animation-play-state: paused;
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
   }
 }

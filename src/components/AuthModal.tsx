@@ -63,7 +63,7 @@ export const AuthModal = ({ isOpen, onClose, defaultTab = 'login' }: AuthModalPr
         <div>
         <DialogHeader className="mb-4">
           <DialogTitle className="text-3xl font-bold text-center text-black dark:text-white mb-2">
-            Welcome to myTeacherAI
+Welcome to MyTeacherAI
           </DialogTitle>
           <p className="text-sm text-gray-500 dark:text-gray-400 text-center">
             Create an account or log in to start generating lectures
