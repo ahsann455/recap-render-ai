@@ -17,7 +17,7 @@ export const Hero = ({ onGetStarted }: { onGetStarted: () => void }) => {
   const marqueeItems = [...halfTrack, ...halfTrack];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center bg-white dark:bg-gray-950">
+    <section className="relative min-h-screen flex items-center justify-center bg-white dark:bg-gray-950 overflow-x-hidden">
       {/* Content */}
       <div className="relative z-10 w-full px-6 py-8">
         {/* Main Content Grid */}
@@ -25,21 +25,21 @@ export const Hero = ({ onGetStarted }: { onGetStarted: () => void }) => {
           {/* Left Column - Text Content */}
           <div className="text-left animate-fade-in">
             {/* Main Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-4">
               <span className="text-black dark:text-white">The most realistic </span>
               <span className="text-black dark:text-white">AI lecture </span>
               <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">platform</span>
             </h1>
 
             {/* Subheadline */}
-            <p className="text-lg text-gray-600 dark:text-gray-400 mb-6 max-w-xl animate-fade-in animation-delay-200">
+            <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-6 max-w-xl animate-fade-in animation-delay-200">
 Over 1,000,000 students use MyTeacherAI to create realistic lecture experiences.
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-start gap-3 mb-4 animate-fade-in animation-delay-400">
               <Button 
-                className="text-sm px-6 py-5 h-auto bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-black rounded-md font-semibold transition-all duration-200 uppercase"
+                className="text-sm px-5 py-4 sm:px-6 sm:py-5 h-auto bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-black rounded-md font-semibold transition-all duration-200 uppercase"
                 onClick={onGetStarted}
               >
                 Get Started Free
@@ -47,7 +47,7 @@ Over 1,000,000 students use MyTeacherAI to create realistic lecture experiences.
               
               <Button 
                 variant="outline"
-                className="text-sm px-6 py-5 h-auto rounded-md font-semibold border-2 border-gray-300 dark:border-gray-700 bg-white text-black dark:bg-gray-950 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-200 uppercase"
+                className="text-sm px-5 py-4 sm:px-6 sm:py-5 h-auto rounded-md font-semibold border-2 border-gray-300 dark:border-gray-700 bg-white text-black dark:bg-gray-950 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-200 uppercase"
                 onClick={onGetStarted}
               >
                 Talk to Sales

@@ -1,4 +1,4 @@
-import { BookOpen, User, LogOut, ChevronDown } from "lucide-react";
+import { BookOpen, User, LogOut, ChevronDown, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { AuthModal } from "@/components/AuthModal";
@@ -18,6 +18,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 
 export const TopNav = () => {
   const { user, logout } = useAuth();
@@ -36,89 +37,91 @@ export const TopNav = () => {
         {/* Left: Logo */}
         <a href="/" className="flex items-center gap-2">
           <BookOpen className="w-5 h-5 text-black dark:text-white" />
-<span className="text-sm font-bold text-black dark:text-white">MyTeacherAI</span>
+          <span className="text-sm font-bold text-black dark:text-white">MyTeacherAI</span>
         </a>
 
-        {/* Center: Menu */}
-        <NavigationMenu>
-          <NavigationMenuList className="items-center gap-1">
-            {/* Simple links */}
-            <NavigationMenuItem>
-<a href="/features" className="text-sm px-3 py-2 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Features</a>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <a href="#" className="text-sm px-3 py-2 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Calendar</a>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-<a href="/ai" className="text-sm px-3 py-2 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">AI</a>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-<a href="/enterprise" className="text-sm px-3 py-2 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Enterprise</a>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-<a href="/pricing" className="text-sm px-3 py-2 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Pricing</a>
-            </NavigationMenuItem>
+        {/* Center: Menu (desktop) */}
+        <div className="hidden md:block">
+          <NavigationMenu>
+            <NavigationMenuList className="items-center gap-1">
+              {/* Simple links */}
+              <NavigationMenuItem>
+                <a href="/features" className="text-sm px-3 py-2 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Features</a>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <a href="#" className="text-sm px-3 py-2 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Calendar</a>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <a href="/ai" className="text-sm px-3 py-2 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">AI</a>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <a href="/enterprise" className="text-sm px-3 py-2 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Enterprise</a>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <a href="/pricing" className="text-sm px-3 py-2 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Pricing</a>
+              </NavigationMenuItem>
 
-            {/* Explore mega menu */}
-            <NavigationMenuItem>
-              <Trigger label="Explore" />
-              <NavigationMenuContent className="rounded-md border-0 ring-0 shadow-xl p-8 md:w-[1000px] bg-white dark:bg-gray-900">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
-                  <div>
-                    <p className="text-sm font-medium text-gray-500 mb-4">Learn</p>
-                    <ul className="space-y-4">
-                      <li>
-                        <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Customer stories</div>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">See how teams use us</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Community</div>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">Join events & groups</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Guides & tutorials</div>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">Level up fast</p>
-                        </a>
-                      </li>
-                    </ul>
+              {/* Explore mega menu */}
+              <NavigationMenuItem>
+                <Trigger label="Explore" />
+                <NavigationMenuContent className="rounded-md border-0 ring-0 shadow-xl p-8 md:w-[1000px] bg-white dark:bg-gray-900">
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <div>
+                      <p className="text-sm font-medium text-gray-500 mb-4">Learn</p>
+                      <ul className="space-y-4">
+                        <li>
+                          <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
+                            <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Customer stories</div>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">See how teams use us</p>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
+                            <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Community</div>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">Join events & groups</p>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
+                            <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Guides & tutorials</div>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">Level up fast</p>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-500 mb-4">Build</p>
+                      <ul className="space-y-4">
+                        <li>
+                          <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
+                            <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Template gallery</div>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">Kickstart your workspace</p>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
+                            <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Integrations</div>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">Connect favorite tools</p>
+                          </a>
+                        </li>
+                        <li>
+                          <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
+                            <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Status</div>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">System health</p>
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm font-medium text-gray-500 mb-4">Build</p>
-                    <ul className="space-y-4">
-                      <li>
-                        <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Template gallery</div>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">Kickstart your workspace</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Integrations</div>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">Connect favorite tools</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Status</div>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">System health</p>
-                        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
 
-        {/* Right: Request demo + Auth */}
-        <div className="flex items-center gap-4">
-<a href="/demo" className="text-sm font-medium text-black dark:text-white hover:opacity-80">Request a demo</a>
+        {/* Right: Actions (desktop) */}
+        <div className="hidden md:flex items-center gap-4">
+          <a href="/demo" className="text-sm font-medium text-black dark:text-white hover:opacity-80">Request a demo</a>
 
           {user ? (
             <DropdownMenu>
@@ -155,6 +158,55 @@ export const TopNav = () => {
               </Button>
             </div>
           )}
+        </div>
+
+        {/* Mobile menu trigger */}
+        <div className="md:hidden">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" aria-label="Open menu" className="text-black dark:text-white">
+                <Menu className="h-5 w-5" />
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-full max-w-[100vw] bg-white dark:bg-gray-950 p-6">
+              <nav className="mt-2 space-y-1">
+                <a href="/features" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Features</a>
+                <a href="#" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Calendar</a>
+                <a href="/ai" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">AI</a>
+                <a href="/enterprise" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Enterprise</a>
+                <a href="/pricing" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Pricing</a>
+                <a href="/demo" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Request a demo</a>
+              </nav>
+
+              <div className="mt-4 border-t border-gray-200 dark:border-gray-800 pt-4 px-1">
+                {user ? (
+                  <div className="space-y-3">
+                    <div className="px-2 text-sm text-gray-600 dark:text-gray-400">Signed in as</div>
+                    <div className="px-2 font-medium text-black dark:text-white">{user.name}</div>
+                    <Button onClick={logout} className="w-full bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-black">
+                      <LogOut className="h-4 w-4 mr-2" /> Logout
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="grid grid-cols-2 gap-3">
+                    <Button
+                      variant="outline"
+                      onClick={() => { setAuthTab("login"); setShowAuthModal(true); }}
+                      className="border-gray-300 dark:border-gray-700"
+                    >
+                      Login
+                    </Button>
+                    <Button
+                      onClick={() => { setAuthTab("signup"); setShowAuthModal(true); }}
+                      className="bg-black hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 text-white dark:text-black"
+                    >
+                      Sign Up
+                    </Button>
+                  </div>
+                )}
+              </div>
+            </SheetContent>
+          </Sheet>
         </div>
       </div>
 

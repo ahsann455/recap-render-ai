@@ -40,10 +40,10 @@ export const Features = () => {
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-black dark:text-white">
+          <h2 className="text-3xl md:text-5xl font-bold mb-4 text-black dark:text-white">
             Everything you need to learn better
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
+          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
             Powerful AI features designed to transform your notes into engaging lectures
           </p>
         </div>
