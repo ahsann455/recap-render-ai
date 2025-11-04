@@ -6,7 +6,7 @@ export const Footer = () => (
       <div className="grid md:grid-cols-5 gap-8 mb-8">
         {/* Brand */}
         <div className="md:col-span-2">
-          <h3 className="text-xl font-bold mb-3 text-white">MyTeacherAI</h3>
+          <h3 className="text-xl font-bold mb-3 text-white">PreplitAI</h3>
           <p className="text-gray-300 mb-6">
             Transform your learning experience with AI-powered video lectures
           </p>
@@ -25,7 +25,7 @@ export const Footer = () => (
           <ul className="space-y-2 text-sm text-gray-400">
             <li><a href="/features" className="hover:underline">Features</a></li>
             <li><a href="/pricing" className="hover:underline">Pricing</a></li>
-            <li>API</li>
+            <li><a href="/developers" className="hover:underline">API</a></li>
           </ul>
         </div>
         
@@ -52,7 +52,7 @@ export const Footer = () => (
       
       <div className="pt-8 border-t border-white/10 text-center">
         <p className="text-sm text-gray-400">
-          © 2025 MyTeacherAI. All rights reserved.
+          © 2025 PreplitAI. All rights reserved.
         </p>
       </div>
     </div>

@@ -154,4 +154,43 @@ router.get('/me', authMiddleware, (req, res) => {
   }
 });
 
+// PUT /api/auth/profile - Update name
+router.put('/profile', authMiddleware, (req, res) => {
+  try {
+    const { name } = req.body;
+    if (!name || name.trim().length === 0) {
+      return res.status(400).json({ success: false, message: 'Name is required' });
+    }
+    db.prepare('UPDATE users SET name = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?').run(name.trim(), req.userId);
+    const user = db.prepare('SELECT id, email, name FROM users WHERE id = ?').get(req.userId);
+    res.json({ success: true, message: 'Profile updated', user });
+  } catch (error) {
+    console.error('Update profile error:', error);
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+});
+
+// PUT /api/auth/password - Change password
+router.put('/password', authMiddleware, async (req, res) => {
+  try {
+    const { currentPassword, newPassword } = req.body;
+    if (!currentPassword || !newPassword) {
+      return res.status(400).json({ success: false, message: 'Current and new password are required' });
+    }
+    if (newPassword.length < 6) {
+      return res.status(400).json({ success: false, message: 'New password must be at least 6 characters' });
+    }
+    const user = db.prepare('SELECT id, password FROM users WHERE id = ?').get(req.userId);
+    if (!user) return res.status(404).json({ success: false, message: 'User not found' });
+    const valid = await bcrypt.compare(currentPassword, user.password);
+    if (!valid) return res.status(401).json({ success: false, message: 'Current password is incorrect' });
+    const hashed = await bcrypt.hash(newPassword, 10);
+    db.prepare('UPDATE users SET password = ?, updated_at = CURRENT_TIMESTAMP WHERE id = ?').run(hashed, req.userId);
+    res.json({ success: true, message: 'Password updated' });
+  } catch (error) {
+    console.error('Change password error:', error);
+    res.status(500).json({ success: false, message: 'Server error' });
+  }
+});
+
 module.exports = router;

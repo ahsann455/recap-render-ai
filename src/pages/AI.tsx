@@ -29,7 +29,7 @@ const features = [
   },
   {
     title: "Developer API",
-    desc: "Bring MyTeacherAI into your tools with secure APIs and SDKs.",
+    desc: "Bring PreplitAI into your tools with secure APIs and SDKs.",
     points: ["REST & webhooks", "OAuth & tokens", "Rate limits & audit"]
   },
 ];
@@ -39,7 +39,7 @@ const AI = () => {
     <div className="min-h-screen bg-white dark:bg-gray-950">
       {/* Hero */}
       <section className="max-w-7xl mx-auto px-6 pt-16 pb-10">
-        <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">MyTeacherAI · Product</p>
+        <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">PreplitAI · Product</p>
         <h1 className="mt-2 text-4xl md:text-6xl font-bold text-black dark:text-white">
           The AI workspace that works for you.
         </h1>
@@ -70,9 +70,9 @@ const AI = () => {
         ))}
       </section>
 
-      {/* Why MyTeacherAI */}
+      {/* Why PreplitAI */}
       <section className="max-w-7xl mx-auto px-6 py-16">
-        <h2 className="text-3xl font-bold text-black dark:text-white">Why MyTeacherAI</h2>
+        <h2 className="text-3xl font-bold text-black dark:text-white">Why PreplitAI</h2>
         <div className="mt-6 grid md:grid-cols-3 gap-6">
           <div className="p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
             <h4 className="font-semibold text-black dark:text-white">All‑in‑one</h4>

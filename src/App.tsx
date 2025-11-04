@@ -12,6 +12,17 @@ import Enterprise from "./pages/Enterprise";
 import AI from "./pages/AI";
 import FeaturesPage from "./pages/FeaturesPage";
 import RequestDemo from "./pages/RequestDemo";
+import CustomerStories from "./pages/CustomerStories";
+import Community from "./pages/Community";
+import Guides from "./pages/Guides";
+import Templates from "./pages/Templates";
+import Integrations from "./pages/Integrations";
+import StatusPage from "./pages/Status";
+import APIPage from "./pages/APIPage";
+import About from "./pages/About";
+import TalkToSales from "./pages/TalkToSales";
+import AccountOverview from "./pages/AccountOverview";
+import AccountSettings from "./pages/AccountSettings";
 
 const queryClient = new QueryClient();
 
@@ -30,6 +41,17 @@ const App = () => (
             <Route path="/ai" element={<AI />} />
             <Route path="/features" element={<FeaturesPage />} />
             <Route path="/demo" element={<RequestDemo />} />
+            <Route path="/customer-stories" element={<CustomerStories />} />
+            <Route path="/community" element={<Community />} />
+            <Route path="/guides" element={<Guides />} />
+            <Route path="/templates" element={<Templates />} />
+            <Route path="/integrations" element={<Integrations />} />
+            <Route path="/status" element={<StatusPage />} />
+            <Route path="/developers" element={<APIPage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/sales" element={<TalkToSales />} />
+            <Route path="/account" element={<AccountOverview />} />
+            <Route path="/settings" element={<AccountSettings />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

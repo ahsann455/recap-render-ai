@@ -33,7 +33,7 @@ export const Hero = ({ onGetStarted }: { onGetStarted: () => void }) => {
 
             {/* Subheadline */}
             <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-6 max-w-xl animate-fade-in animation-delay-200">
-Over 1,000,000 students use MyTeacherAI to create realistic lecture experiences.
+Over 1,000,000 students use PreplitAI to create realistic lecture experiences.
             </p>
 
             {/* CTA Buttons */}
@@ -46,11 +46,11 @@ Over 1,000,000 students use MyTeacherAI to create realistic lecture experiences.
               </Button>
               
               <Button 
+                asChild
                 variant="outline"
                 className="text-sm px-5 py-4 sm:px-6 sm:py-5 h-auto rounded-md font-semibold border-2 border-gray-300 dark:border-gray-700 bg-white text-black dark:bg-gray-950 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-900 transition-all duration-200 uppercase"
-                onClick={onGetStarted}
               >
-                Talk to Sales
+                <a href="/sales">Talk to Sales</a>
               </Button>
             </div>
 

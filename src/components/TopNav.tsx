@@ -1,4 +1,4 @@
-import { BookOpen, User, LogOut, ChevronDown, Menu } from "lucide-react";
+import { BookOpen, User, LogOut, ChevronDown, Menu, LayoutDashboard, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { AuthModal } from "@/components/AuthModal";
@@ -32,12 +32,13 @@ export const TopNav = () => {
   );
 
   return (
-    <header className="sticky top-0 z-50 bg-white/70 dark:bg-gray-950/75 backdrop-blur-xl backdrop-saturate-150">
+    <>
+      <header className="fixed top-0 left-0 right-0 z-50 bg-white/60 dark:bg-gray-950/60 backdrop-blur-xl backdrop-saturate-150">
       <div className="max-w-7xl mx-auto h-14 px-4 flex items-center justify-between">
         {/* Left: Logo */}
         <a href="/" className="flex items-center gap-2">
           <BookOpen className="w-5 h-5 text-black dark:text-white" />
-          <span className="text-sm font-bold text-black dark:text-white">MyTeacherAI</span>
+          <span className="text-sm font-bold text-black dark:text-white">PreplitAI</span>
         </a>
 
         {/* Center: Menu (desktop) */}
@@ -60,6 +61,9 @@ export const TopNav = () => {
               <NavigationMenuItem>
                 <a href="/pricing" className="text-sm px-3 py-2 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Pricing</a>
               </NavigationMenuItem>
+              <NavigationMenuItem>
+                <a href="/about" className="text-sm px-3 py-2 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">About</a>
+              </NavigationMenuItem>
 
               {/* Explore mega menu */}
               <NavigationMenuItem>
@@ -70,22 +74,22 @@ export const TopNav = () => {
                       <p className="text-sm font-medium text-gray-500 mb-4">Learn</p>
                       <ul className="space-y-4">
                         <li>
-                          <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                            <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Customer stories</div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">See how teams use us</p>
-                          </a>
+<a href="/customer-stories" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
+                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Customer stories</div>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">See how teams use us</p>
+                        </a>
                         </li>
                         <li>
-                          <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                            <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Community</div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Join events & groups</p>
-                          </a>
+<a href="/community" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
+                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Community</div>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">Join events & groups</p>
+                        </a>
                         </li>
                         <li>
-                          <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                            <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Guides & tutorials</div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Level up fast</p>
-                          </a>
+<a href="/guides" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
+                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Guides & tutorials</div>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">Level up fast</p>
+                        </a>
                         </li>
                       </ul>
                     </div>
@@ -93,22 +97,28 @@ export const TopNav = () => {
                       <p className="text-sm font-medium text-gray-500 mb-4">Build</p>
                       <ul className="space-y-4">
                         <li>
-                          <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                            <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Template gallery</div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Kickstart your workspace</p>
-                          </a>
+<a href="/templates" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
+                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Template gallery</div>
+<p className="text-sm text-gray-500 dark:text-gray-400">Kickstart your workspace</p>
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/developers" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
+                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">API</div>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">Build with PreplitAI</p>
+                        </a>
                         </li>
                         <li>
-                          <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                            <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Integrations</div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">Connect favorite tools</p>
-                          </a>
+<a href="/integrations" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
+                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Integrations</div>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">Connect favorite tools</p>
+                        </a>
                         </li>
                         <li>
-                          <a href="#" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                            <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Status</div>
-                            <p className="text-sm text-gray-500 dark:text-gray-400">System health</p>
-                          </a>
+<a href="/status" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
+                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Status</div>
+                          <p className="text-sm text-gray-500 dark:text-gray-400">System health</p>
+                        </a>
                         </li>
                       </ul>
                     </div>
@@ -132,10 +142,21 @@ export const TopNav = () => {
                   <ChevronDown className="ml-1 h-3 w-3" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-md shadow-md">
-                <DropdownMenuLabel className="px-3 py-2 text-xs text-gray-500">My Account</DropdownMenuLabel>
+              <DropdownMenuContent className="min-w-[220px] bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-1 shadow-xl">
+                <DropdownMenuItem asChild className="cursor-pointer rounded-md">
+                  <a href="/account" className="flex w-full items-center gap-2 px-2 py-2 text-sm text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <LayoutDashboard className="h-4 w-4 text-gray-500" />
+                    <span>Account Overview</span>
+                  </a>
+                </DropdownMenuItem>
+                <DropdownMenuItem asChild className="cursor-pointer rounded-md">
+                  <a href="/settings" className="flex w-full items-center gap-2 px-2 py-2 text-sm text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800">
+                    <Settings className="h-4 w-4 text-gray-500" />
+                    <span>Account Settings</span>
+                  </a>
+                </DropdownMenuItem>
                 <DropdownMenuSeparator />
-                <DropdownMenuItem onClick={logout} className="cursor-pointer rounded-md focus:bg-black focus:text-white hover:bg-black hover:text-white">
+                <DropdownMenuItem onClick={logout} className="cursor-pointer rounded-md text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800">
                   <LogOut className="h-4 w-4 mr-2" />
                   Logout
                 </DropdownMenuItem>
@@ -175,6 +196,7 @@ export const TopNav = () => {
                 <a href="/ai" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">AI</a>
                 <a href="/enterprise" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Enterprise</a>
                 <a href="/pricing" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Pricing</a>
+                <a href="/about" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">About</a>
                 <a href="/demo" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Request a demo</a>
               </nav>
 
@@ -216,5 +238,12 @@ export const TopNav = () => {
         defaultTab={authTab}
       />
     </header>
-  );
+    <div className="h-14" />
+
+    <AuthModal
+      isOpen={showAuthModal}
+      onClose={() => setShowAuthModal(false)}
+      defaultTab={authTab}
+    />
+  </>);
 };

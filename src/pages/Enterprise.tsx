@@ -14,7 +14,7 @@ const bullets = {
     "Instant Q&A about meetings and lectures",
   ],
   ai: [
-    "MyTeacherAI Agents to automate recurring work",
+    "PreplitAI Agents to automate recurring work",
     "AI Meeting Notes with action items and summaries",
     "Multilingual voice, avatars, and realistic TTS",
   ],
@@ -74,7 +74,7 @@ const Enterprise = () => {
     <div className="min-h-screen bg-white dark:bg-gray-950">
       {/* Hero */}
       <section className="max-w-7xl mx-auto px-6 pt-16 pb-10">
-        <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">MyTeacherAI for Enterprise</p>
+        <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">PreplitAI for Enterprise</p>
         <h1 className="mt-2 text-4xl md:text-6xl font-bold text-black dark:text-white">
           Knowledge and work. Connected.
         </h1>
@@ -104,7 +104,7 @@ const Enterprise = () => {
         {/* Enterprise search */}
         <div className="p-8 rounded-2xl border border-gray-200 dark:border-gray-800">
           <h2 className="text-2xl font-bold text-black dark:text-white">Enterprise search</h2>
-          <p className="mt-2 text-gray-600 dark:text-gray-400">Instantly surface answers across MyTeacherAI with citations.</p>
+          <p className="mt-2 text-gray-600 dark:text-gray-400">Instantly surface answers across PreplitAI with citations.</p>
           <ul className="mt-4 space-y-2 text-sm text-gray-700 dark:text-gray-300 list-disc pl-5">
             {bullets.search.map((b) => (<li key={b}>{b}</li>))}
           </ul>
@@ -159,10 +159,10 @@ const Enterprise = () => {
           <h3 className="text-xl font-semibold text-black dark:text-white">Request a demo</h3>
           <p className="text-gray-600 dark:text-gray-400 mt-1">Tell us your work email and we’ll get in touch within 1 business day.</p>
           <form onSubmit={(e) => e.preventDefault()} className="mt-6 flex flex-col sm:flex-row gap-3">
-            <Input type="email" placeholder="name@company.com" className="h-11" required />
+            <Input type="email" placeholder="name@company.com" className="h-11 bg-white dark:bg-white text-black dark:text-black placeholder:text-gray-500 dark:placeholder:text-gray-500 border border-gray-200 focus:border-gray-300 focus-visible:ring-0 focus-visible:ring-offset-0 shadow-sm" required />
             <Button type="submit" className="h-11">Request a demo</Button>
           </form>
-          <p className="mt-3 text-xs text-gray-500">By submitting, you agree to be contacted about MyTeacherAI Enterprise.</p>
+          <p className="mt-3 text-xs text-gray-500">By submitting, you agree to be contacted about PreplitAI Enterprise.</p>
         </div>
       </section>
 
