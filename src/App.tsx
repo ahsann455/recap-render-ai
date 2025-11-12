@@ -5,6 +5,8 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { TopNav } from "@/components/TopNav";
+import { Analytics } from "@/components/Analytics";
+import { RouteChangeTracker } from "@/components/RouteChangeTracker";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Pricing from "./pages/Pricing";
@@ -23,6 +25,7 @@ import About from "./pages/About";
 import TalkToSales from "./pages/TalkToSales";
 import AccountOverview from "./pages/AccountOverview";
 import AccountSettings from "./pages/AccountSettings";
+import Examples from "./pages/Examples";
 
 const queryClient = new QueryClient();
 
@@ -30,9 +33,11 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <AuthProvider>
       <TooltipProvider>
+        <Analytics />
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <RouteChangeTracker />
           <TopNav />
           <Routes>
             <Route path="/" element={<Index />} />
@@ -45,6 +50,7 @@ const App = () => (
             <Route path="/community" element={<Community />} />
             <Route path="/guides" element={<Guides />} />
             <Route path="/templates" element={<Templates />} />
+            <Route path="/examples" element={<Examples />} />
             <Route path="/integrations" element={<Integrations />} />
             <Route path="/status" element={<StatusPage />} />
             <Route path="/developers" element={<APIPage />} />

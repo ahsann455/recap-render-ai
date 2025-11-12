@@ -1,17 +1,28 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { SEOHead } from "@/components/SEOHead";
 
 const About = () => {
+  const siteUrl = (import.meta as any).env?.VITE_SITE_URL || "https://yourdomain.com";
+  const canonical = `${siteUrl}/about`;
   return (
-    <main className="min-h-screen bg-white dark:bg-gray-950 overflow-x-hidden">
+    <main className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950 overflow-x-hidden">
+      <SEOHead
+        title="About PreplitAI"
+        description="We’re building the most realistic AI lecture platform to help teams create high‑quality video lessons."
+        url={canonical}
+        canonical={canonical}
+      />
       {/* Hero */}
-      <section className="px-6 pt-16 pb-10">
-        <div className="max-w-6xl mx-auto">
-          <h1 className="text-3xl md:text-5xl font-bold text-black dark:text-white mb-4">
-            About PreplitAI
+      <section className="relative px-6 pt-24 pb-16 overflow-hidden">
+        <div className="absolute top-0 -left-48 w-96 h-96 bg-blue-500/10 dark:bg-blue-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 -right-48 w-96 h-96 bg-purple-500/10 dark:bg-purple-500/5 rounded-full blur-3xl" />
+        <div className="max-w-6xl mx-auto relative z-10">
+          <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white mb-6 leading-tight">
+            About <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">PreplitAI</span>
           </h1>
-          <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl">
-            We’re building the most realistic AI lecture platform to help students and teams
+          <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl leading-relaxed">
+            We're building the most realistic AI lecture platform to help students and teams
             learn faster, retain more, and create high‑quality video lessons from any notes.
           </p>
         </div>

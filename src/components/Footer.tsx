@@ -23,9 +23,12 @@ export const Footer = () => (
         <div>
           <h4 className="font-semibold mb-3 text-white">Product</h4>
           <ul className="space-y-2 text-sm text-gray-400">
-            <li><a href="/features" className="hover:underline">Features</a></li>
-            <li><a href="/pricing" className="hover:underline">Pricing</a></li>
-            <li><a href="/developers" className="hover:underline">API</a></li>
+            <li><a href="/features" className="hover:text-white hover:underline transition">Features</a></li>
+            <li><a href="/pricing" className="hover:text-white hover:underline transition">Pricing</a></li>
+            <li><a href="/enterprise" className="hover:text-white hover:underline transition">Enterprise</a></li>
+            <li><a href="/ai" className="hover:text-white hover:underline transition">AI Workspace</a></li>
+            <li><a href="/developers" className="hover:text-white hover:underline transition">API</a></li>
+            <li><a href="/integrations" className="hover:text-white hover:underline transition">Integrations</a></li>
           </ul>
         </div>
         
@@ -33,9 +36,10 @@ export const Footer = () => (
         <div>
           <h4 className="font-semibold mb-3 text-white">Company</h4>
           <ul className="space-y-2 text-sm text-gray-400">
-            <li>About</li>
-            <li>Blog</li>
-            <li>Contact</li>
+            <li><a href="/about" className="hover:text-white hover:underline transition">About</a></li>
+            <li><a href="/customer-stories" className="hover:text-white hover:underline transition">Customer Stories</a></li>
+            <li><a href="/sales" className="hover:text-white hover:underline transition">Contact Sales</a></li>
+            <li><a href="/status" className="hover:text-white hover:underline transition">System Status</a></li>
           </ul>
         </div>
 
@@ -43,9 +47,10 @@ export const Footer = () => (
         <div>
           <h4 className="font-semibold mb-3 text-white">Resources</h4>
           <ul className="space-y-2 text-sm text-gray-400">
-            <li>Docs</li>
-            <li>Guides</li>
-            <li>Status</li>
+            <li><a href="/guides" className="hover:text-white hover:underline transition">Guides</a></li>
+            <li><a href="/templates" className="hover:text-white hover:underline transition">Templates</a></li>
+            <li><a href="/examples" className="hover:text-white hover:underline transition">Examples</a></li>
+            <li><a href="/community" className="hover:text-white hover:underline transition">Community</a></li>
           </ul>
         </div>
       </div>

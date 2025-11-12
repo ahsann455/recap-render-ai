@@ -1,16 +1,38 @@
 import { Footer } from "@/components/Footer";
 import { Button } from "@/components/ui/button";
+import { SEOHead } from "@/components/SEOHead";
 
 const APIPage = () => {
+  const siteUrl = (import.meta as any).env?.VITE_SITE_URL || "https://yourdomain.com";
+  const canonical = `${siteUrl}/developers`;
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      { "@type": "ListItem", position: 2, name: "Developers", item: canonical },
+    ]
+  };
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950">
+    <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+      <SEOHead
+        title="PreplitAI API"
+        description="Build AI lecture workflows, generate videos, and search knowledge from your apps."
+        url={canonical}
+        canonical={canonical}
+        schemaMarkup={breadcrumb}
+      />
       {/* Hero */}
-      <section className="max-w-7xl mx-auto px-6 pt-16 pb-10">
-        <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">Developers</p>
-        <h1 className="mt-2 text-4xl md:text-6xl font-bold text-black dark:text-white">PreplitAI API</h1>
-        <p className="mt-4 text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl">
-          Build AI lecture workflows, generate videos, and search knowledge from your apps.
-        </p>
+      <section className="relative max-w-7xl mx-auto px-6 pt-24 pb-16 overflow-hidden">
+        <div className="absolute top-0 -right-48 w-96 h-96 bg-cyan-500/10 dark:bg-cyan-500/5 rounded-full blur-3xl" />
+        <div className="relative z-10">
+          <p className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-4">Developers</p>
+          <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white mb-6 leading-tight">
+            PreplitAI <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">API</span>
+          </h1>
+          <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl leading-relaxed mb-10">
+            Build AI lecture workflows, generate videos, and search knowledge from your apps.
+          </p>
         <div className="mt-6 flex flex-col sm:flex-row gap-3">
           <a href="/enterprise#contact">
             <Button className="px-6 py-5 h-auto text-sm font-semibold">Request access</Button>
@@ -18,6 +40,7 @@ const APIPage = () => {
           <a href="/integrations">
             <Button variant="outline" className="px-6 py-5 h-auto text-sm font-semibold">View integrations</Button>
           </a>
+        </div>
         </div>
       </section>
 

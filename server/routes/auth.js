@@ -53,14 +53,18 @@ router.post('/signup', async (req, res) => {
       { expiresIn: '7d' }
     );
 
+    // Get user with credit balance
+    const newUser = db.prepare('SELECT id, email, name, credit_balance FROM users WHERE id = ?').get(userId);
+
     res.json({
       success: true,
-      message: 'User created successfully',
+      message: 'User created successfully. You received 10 free credits!',
       token,
       user: {
-        id: userId,
-        email,
-        name
+        id: newUser.id,
+        email: newUser.email,
+        name: newUser.name,
+        creditBalance: newUser.credit_balance
       }
     });
   } catch (error) {
@@ -117,7 +121,8 @@ router.post('/login', async (req, res) => {
       user: {
         id: user.id,
         email: user.email,
-        name: user.name
+        name: user.name,
+        creditBalance: user.credit_balance
       }
     });
   } catch (error) {
@@ -132,7 +137,7 @@ router.post('/login', async (req, res) => {
 // GET /api/auth/me - Get current user info
 router.get('/me', authMiddleware, (req, res) => {
   try {
-    const user = db.prepare('SELECT id, email, name, created_at FROM users WHERE id = ?').get(req.userId);
+    const user = db.prepare('SELECT id, email, name, credit_balance, created_at FROM users WHERE id = ?').get(req.userId);
     
     if (!user) {
       return res.status(404).json({ 
@@ -143,7 +148,10 @@ router.get('/me', authMiddleware, (req, res) => {
 
     res.json({
       success: true,
-      user
+      user: {
+        ...user,
+        creditBalance: user.credit_balance
+      }
     });
   } catch (error) {
     console.error('Get user error:', error);

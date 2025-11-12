@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Footer } from "@/components/Footer";
+import { SEOHead } from "@/components/SEOHead";
 
 const features = [
   {
@@ -35,17 +36,30 @@ const features = [
 ];
 
 const AI = () => {
+  const siteUrl = (import.meta as any).env?.VITE_SITE_URL || "https://yourdomain.com";
+  const canonical = `${siteUrl}/ai`;
   return (
-    <div className="min-h-screen bg-white dark:bg-gray-950">
+    <div className="min-h-screen bg-gradient-to-b from-white via-gray-50 to-white dark:from-gray-950 dark:via-gray-900 dark:to-gray-950">
+      <SEOHead
+        title="AI Workspace & Lecture Tools"
+        description="All-in-one AI: notes, knowledge search, workflows, avatars, and voices for lecture creation."
+        url={canonical}
+        canonical={canonical}
+      />
       {/* Hero */}
-      <section className="max-w-7xl mx-auto px-6 pt-16 pb-10">
-        <p className="text-sm font-semibold text-blue-600 dark:text-blue-400">PreplitAI · Product</p>
-        <h1 className="mt-2 text-4xl md:text-6xl font-bold text-black dark:text-white">
-          The AI workspace that works for you.
-        </h1>
-        <p className="mt-4 text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl">
-          All‑in‑one AI that takes notes, searches knowledge, and builds workflows — right where your team plans and learns.
-        </p>
+      <section className="relative max-w-7xl mx-auto px-6 pt-24 pb-16 overflow-hidden">
+        <div className="absolute top-0 -left-48 w-96 h-96 bg-blue-500/10 dark:bg-blue-500/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 -right-48 w-96 h-96 bg-purple-500/10 dark:bg-purple-500/5 rounded-full blur-3xl" />
+        <div className="relative z-10">
+          <p className="text-sm font-semibold text-blue-600 dark:text-blue-400 mb-4">PreplitAI · Product</p>
+          <h1 className="text-5xl md:text-7xl font-bold text-black dark:text-white mb-6 leading-tight">
+            The AI workspace that
+            <br />
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">works for you</span>
+          </h1>
+          <p className="text-lg md:text-2xl text-gray-600 dark:text-gray-400 max-w-3xl leading-relaxed mb-10">
+            All‑in‑one AI that takes notes, searches knowledge, and builds workflows — right where your team plans and learns.
+          </p>
         <div className="mt-6 flex flex-col sm:flex-row gap-3">
           <a href="/pricing" className="inline-block">
             <Button className="px-6 py-5 h-auto text-sm font-semibold">Get started</Button>
@@ -55,6 +69,7 @@ const AI = () => {
           </a>
         </div>
         <p className="mt-3 text-xs text-gray-500">All‑in‑one pricing · cancel anytime</p>
+        </div>
       </section>
 
       {/* Feature grid */}
