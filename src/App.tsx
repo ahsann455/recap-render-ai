@@ -26,6 +26,7 @@ import TalkToSales from "./pages/TalkToSales";
 import AccountOverview from "./pages/AccountOverview";
 import AccountSettings from "./pages/AccountSettings";
 import Examples from "./pages/Examples";
+import Credits from "./pages/Credits";
 
 const queryClient = new QueryClient();
 
@@ -58,6 +59,7 @@ const App = () => (
             <Route path="/sales" element={<TalkToSales />} />
             <Route path="/account" element={<AccountOverview />} />
             <Route path="/settings" element={<AccountSettings />} />
+            <Route path="/credits" element={<Credits />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
