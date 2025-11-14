@@ -28,13 +28,48 @@ const Guides = () => (
           Step-by-step guides to build AI lectures, agents, and knowledge hubs.
         </p>
       </div>
-      <div className="mt-10 grid md:grid-cols-3 gap-6">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <article key={i} className="p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
-            <h3 className="text-xl font-semibold text-black dark:text-white">Guide #{i + 1}</h3>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">Learn best practices for script generation, avatars, and exporting.</p>
-          </article>
-        ))}
+      <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article className="p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-800 hover:border-blue-300 dark:hover:border-blue-700 transition-all hover:shadow-xl">
+          <div className="text-4xl mb-4">🚀</div>
+          <h3 className="text-xl font-bold text-black dark:text-white mb-3">Getting Started</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Learn the basics of creating your first video lecture in under 5 minutes.</p>
+          <div className="text-xs text-blue-600 dark:text-blue-400 font-medium">5 min read • Beginner</div>
+        </article>
+
+        <article className="p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-800 hover:border-purple-300 dark:hover:border-purple-700 transition-all hover:shadow-xl">
+          <div className="text-4xl mb-4">🎬</div>
+          <h3 className="text-xl font-bold text-black dark:text-white mb-3">Choosing the Right Voice</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Explore different TTS voices and learn how to select the perfect narrator for your content.</p>
+          <div className="text-xs text-purple-600 dark:text-purple-400 font-medium">8 min read • Beginner</div>
+        </article>
+
+        <article className="p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-800 hover:border-pink-300 dark:hover:border-pink-700 transition-all hover:shadow-xl">
+          <div className="text-4xl mb-4">✍️</div>
+          <h3 className="text-xl font-bold text-black dark:text-white mb-3">Script Optimization</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Best practices for writing and editing scripts that create engaging video lectures.</p>
+          <div className="text-xs text-pink-600 dark:text-pink-400 font-medium">12 min read • Intermediate</div>
+        </article>
+
+        <article className="p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-800 hover:border-green-300 dark:hover:border-green-700 transition-all hover:shadow-xl">
+          <div className="text-4xl mb-4">🎨</div>
+          <h3 className="text-xl font-bold text-black dark:text-white mb-3">Visual Customization</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Master slide design, transitions, and visual effects to enhance your lectures.</p>
+          <div className="text-xs text-green-600 dark:text-green-400 font-medium">15 min read • Intermediate</div>
+        </article>
+
+        <article className="p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-800 hover:border-orange-300 dark:hover:border-orange-700 transition-all hover:shadow-xl">
+          <div className="text-4xl mb-4">📦</div>
+          <h3 className="text-xl font-bold text-black dark:text-white mb-3">Batch Processing</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Generate multiple lectures at once and automate your video production workflow.</p>
+          <div className="text-xs text-orange-600 dark:text-orange-400 font-medium">10 min read • Advanced</div>
+        </article>
+
+        <article className="p-8 rounded-2xl border-2 border-gray-200 dark:border-gray-800 hover:border-cyan-300 dark:hover:border-cyan-700 transition-all hover:shadow-xl">
+          <div className="text-4xl mb-4">🔗</div>
+          <h3 className="text-xl font-bold text-black dark:text-white mb-3">API Integration</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-400 mb-4">Connect PreplitAI to your existing systems using our developer API.</p>
+          <div className="text-xs text-cyan-600 dark:text-cyan-400 font-medium">20 min read • Advanced</div>
+        </article>
       </div>
     </section>
     <Footer />

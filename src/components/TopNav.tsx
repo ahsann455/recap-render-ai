@@ -2,6 +2,7 @@ import { BookOpen, User, LogOut, ChevronDown, Menu, LayoutDashboard, Settings } 
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { AuthModal } from "@/components/AuthModal";
+import { CreditBadge } from "@/components/CreditBadge";
 import { useState } from "react";
 import {
   NavigationMenu,
@@ -131,6 +132,7 @@ export const TopNav = () => {
 
         {/* Right: Actions (desktop) */}
         <div className="hidden md:flex items-center gap-4">
+          {user && <CreditBadge />}
           <a href="/demo" className="text-sm font-medium text-black dark:text-white hover:opacity-80">Request a demo</a>
 
           {user ? (
@@ -142,7 +144,7 @@ export const TopNav = () => {
                   <ChevronDown className="ml-1 h-3 w-3" />
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="min-w-[220px] bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-1 shadow-xl">
+              <DropdownMenuContent align="end" className="min-w-[220px] bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-xl p-1 shadow-xl">
                 <DropdownMenuItem asChild className="cursor-pointer rounded-md">
                   <a href="/account" className="flex w-full items-center gap-2 px-2 py-2 text-sm text-black dark:text-white hover:bg-gray-100 dark:hover:bg-gray-800">
                     <LayoutDashboard className="h-4 w-4 text-gray-500" />

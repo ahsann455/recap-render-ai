@@ -18,13 +18,48 @@ const Templates = () => (
           Kickstart your workspace with ready‑to‑use lecture, syllabus, and project templates.
         </p>
       </div>
-      <div className="mt-10 grid md:grid-cols-3 gap-6">
-        {Array.from({ length: 6 }).map((_, i) => (
-          <article key={i} className="p-6 rounded-2xl border border-gray-200 dark:border-gray-800">
-            <h3 className="text-xl font-semibold text-black dark:text-white">Template #{i + 1}</h3>
-            <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">A prebuilt page to speed up your setup.</p>
-          </article>
-        ))}
+      <div className="mt-10 grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article className="p-8 rounded-2xl border-2 border-blue-200 dark:border-blue-800 bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30 hover:shadow-xl transition-all">
+          <div className="text-4xl mb-4">🧬</div>
+          <h3 className="text-xl font-bold text-black dark:text-white mb-2">Biology Lectures</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">Complete templates for cell biology, genetics, and anatomy lectures with diagrams and animations.</p>
+          <div className="text-xs text-blue-600 dark:text-blue-400 font-medium">12 templates • Science</div>
+        </article>
+
+        <article className="p-8 rounded-2xl border-2 border-purple-200 dark:border-purple-800 bg-gradient-to-br from-purple-50 to-pink-50 dark:from-purple-950/30 dark:to-pink-950/30 hover:shadow-xl transition-all">
+          <div className="text-4xl mb-4">🔢</div>
+          <h3 className="text-xl font-bold text-black dark:text-white mb-2">Mathematics</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">Algebra, calculus, and statistics templates with step-by-step problem solving demonstrations.</p>
+          <div className="text-xs text-purple-600 dark:text-purple-400 font-medium">15 templates • Math</div>
+        </article>
+
+        <article className="p-8 rounded-2xl border-2 border-green-200 dark:border-green-800 bg-gradient-to-br from-green-50 to-emerald-50 dark:from-green-950/30 dark:to-emerald-950/30 hover:shadow-xl transition-all">
+          <div className="text-4xl mb-4">💼</div>
+          <h3 className="text-xl font-bold text-black dark:text-white mb-2">Business & Marketing</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">MBA-level content covering strategy, finance, and digital marketing fundamentals.</p>
+          <div className="text-xs text-green-600 dark:text-green-400 font-medium">10 templates • Business</div>
+        </article>
+
+        <article className="p-8 rounded-2xl border-2 border-orange-200 dark:border-orange-800 bg-gradient-to-br from-orange-50 to-amber-50 dark:from-orange-950/30 dark:to-amber-950/30 hover:shadow-xl transition-all">
+          <div className="text-4xl mb-4">💻</div>
+          <h3 className="text-xl font-bold text-black dark:text-white mb-2">Programming</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">Coding tutorials for Python, JavaScript, and web development with code examples and exercises.</p>
+          <div className="text-xs text-orange-600 dark:text-orange-400 font-medium">18 templates • Tech</div>
+        </article>
+
+        <article className="p-8 rounded-2xl border-2 border-pink-200 dark:border-pink-800 bg-gradient-to-br from-pink-50 to-rose-50 dark:from-pink-950/30 dark:to-rose-950/30 hover:shadow-xl transition-all">
+          <div className="text-4xl mb-4">🎓</div>
+          <h3 className="text-xl font-bold text-black dark:text-white mb-2">History & Social Studies</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">World history, civics, and geography lectures with timelines and interactive maps.</p>
+          <div className="text-xs text-pink-600 dark:text-pink-400 font-medium">14 templates • Humanities</div>
+        </article>
+
+        <article className="p-8 rounded-2xl border-2 border-cyan-200 dark:border-cyan-800 bg-gradient-to-br from-cyan-50 to-sky-50 dark:from-cyan-950/30 dark:to-sky-950/30 hover:shadow-xl transition-all">
+          <div className="text-4xl mb-4">🎭</div>
+          <h3 className="text-xl font-bold text-black dark:text-white mb-2">Language Learning</h3>
+          <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">ESL, Spanish, and French lessons with pronunciation guides and cultural context.</p>
+          <div className="text-xs text-cyan-600 dark:text-cyan-400 font-medium">20 templates • Languages</div>
+        </article>
       </div>
     </section>
     <Footer />
