@@ -51,9 +51,6 @@ export const TopNav = () => {
                 <a href="/features" className="text-sm px-3 py-2 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Features</a>
               </NavigationMenuItem>
               <NavigationMenuItem>
-                <a href="#" className="text-sm px-3 py-2 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Calendar</a>
-              </NavigationMenuItem>
-              <NavigationMenuItem>
                 <a href="/ai" className="text-sm px-3 py-2 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">AI</a>
               </NavigationMenuItem>
               <NavigationMenuItem>
@@ -194,7 +191,6 @@ export const TopNav = () => {
             <SheetContent side="left" className="w-full max-w-[100vw] bg-white dark:bg-gray-950 p-6">
               <nav className="mt-2 space-y-1">
                 <a href="/features" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Features</a>
-                <a href="#" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Calendar</a>
                 <a href="/ai" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">AI</a>
                 <a href="/enterprise" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Enterprise</a>
                 <a href="/pricing" className="block px-3 py-3 rounded-md text-black dark:text-white hover:bg-black/5 dark:hover:bg-white/10">Pricing</a>
