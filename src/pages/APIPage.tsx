@@ -37,9 +37,6 @@ const APIPage = () => {
           <a href="/enterprise#contact">
             <Button className="px-6 py-5 h-auto text-sm font-semibold">Request access</Button>
           </a>
-          <a href="/integrations">
-            <Button variant="outline" className="px-6 py-5 h-auto text-sm font-semibold">View integrations</Button>
-          </a>
         </div>
         </div>
       </section>

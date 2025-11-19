@@ -1,9 +1,4 @@
-const pdfjsLib = require('pdfjs-dist');
-const path = require('path');
-pdfjsLib.GlobalWorkerOptions.workerSrc = path.join(
-  require.resolve('pdfjs-dist'),
-  '../build/pdf.worker.mjs'
-);
+const pdfjsLib = require('pdfjs-dist/legacy/build/pdf.mjs');
 const mammoth = require('mammoth');
 const fs = require('fs').promises;
 

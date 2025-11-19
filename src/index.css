@@ -86,7 +86,6 @@
     @apply bg-white text-black antialiased;
     font-feature-settings: "cv11", "ss01";
     font-variation-settings: "opsz" auto;
-    zoom: 0.75;
   }
 }
 

@@ -72,21 +72,9 @@ export const TopNav = () => {
                       <p className="text-sm font-medium text-gray-500 mb-4">Learn</p>
                       <ul className="space-y-4">
                         <li>
-<a href="/customer-stories" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Customer stories</div>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">See how teams use us</p>
-                        </a>
-                        </li>
-                        <li>
 <a href="/community" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
                           <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Community</div>
                           <p className="text-sm text-gray-500 dark:text-gray-400">Join events & groups</p>
-                        </a>
-                        </li>
-                        <li>
-<a href="/guides" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Guides & tutorials</div>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">Level up fast</p>
                         </a>
                         </li>
                       </ul>
@@ -95,22 +83,10 @@ export const TopNav = () => {
                       <p className="text-sm font-medium text-gray-500 mb-4">Build</p>
                       <ul className="space-y-4">
                         <li>
-<a href="/templates" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Template gallery</div>
-<p className="text-sm text-gray-500 dark:text-gray-400">Kickstart your workspace</p>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="/developers" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">API</div>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">Build with PreplitAI</p>
-                        </a>
-                        </li>
-                        <li>
-<a href="/integrations" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
-                          <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">Integrations</div>
-                          <p className="text-sm text-gray-500 dark:text-gray-400">Connect favorite tools</p>
-                        </a>
+                          <a href="/developers" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
+                            <div className="text-[22px] leading-7 font-semibold text-black dark:text-white">API</div>
+                            <p className="text-sm text-gray-500 dark:text-gray-400">Build with PreplitAI</p>
+                          </a>
                         </li>
                         <li>
 <a href="/status" className="block rounded-lg p-2 -mx-2 transition hover:bg-black/5 dark:hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-black dark:focus-visible:ring-white">
